@@ -1,0 +1,35 @@
+.list-item {
+    gap: 8px;
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 6px;
+    border: 1px solid #313638;
+    justify-content: space-between;
+}
+
+.list-item__description-wrapper {
+    gap: 4px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+    @media (min-width: 609px) {
+        width: 70%;
+    }
+}
+
+.list-item__buttons-wrapper {
+    gap: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+
+    @media (min-width: 609px) {
+        max-width: 130px;
+    }
+}
