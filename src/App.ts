@@ -1,17 +1,18 @@
 import './styles.css';
-import { Book } from 'types.ts';
-import { Button } from 'components/Button';
-import { Dialog } from 'components/Dialog';
-import { LibraryStore } from 'components/LibraryStore';
+import { Book, DialogInterface } from 'types.ts';
+import { Button } from 'components/common/Button';
+import { Dialog } from 'components/common/Dialog';
+import { AddBookForm } from 'components/domain/AddBookForm';
+import { LibraryStore } from 'components/domain/LibraryStore';
 
 export class App {
-	libraryStore: LibraryStore;
+	private libraryStore: LibraryStore;
 
 	constructor(library: Book[]) {
 		this.libraryStore = new LibraryStore(library);
 	}
 
-	init() {
+	init(): void {
 		document.querySelector<HTMLDivElement>('#app-container')!.innerHTML = `
 			<main>
 				<header class="header-wrapper">
@@ -48,16 +49,18 @@ export class App {
     			</footer>
 		`;
 
-		const addNewBookDialog = new Dialog();
+		const addNewBookDialog: DialogInterface = new Dialog();
+		const addBookForm = new AddBookForm(this.libraryStore, addNewBookDialog);
+		addNewBookDialog.dialogContent = addBookForm.render();
+		const addNewBookDialogElement: HTMLDialogElement = addNewBookDialog.render();
+
 		const addNewBookButton = new Button({
 			text: '+ Add new book',
 			onClick: () => addNewBookDialog.getDialog().showModal()
-		});
-		const addNewBookButtonElement: HTMLElement = addNewBookButton.render();
-		const addNewBookDialogElement: HTMLElement = addNewBookDialog.render();
+		}).render();
 
-		document.querySelector<HTMLDivElement>('.header-wrapper')!.appendChild(addNewBookButtonElement);
-		document.getElementById<HTMLDivElement>('app-container')!.appendChild(addNewBookDialogElement);
+		document.querySelector<HTMLDivElement>('.header-wrapper')!.appendChild(addNewBookButton);
+		document.getElementById('app-container')!.appendChild(addNewBookDialogElement);
 
 		this.libraryStore.loadBooksList();
 	}

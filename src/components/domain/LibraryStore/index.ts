@@ -1,14 +1,15 @@
-import { type Book } from 'types.ts';
-import { ListItem } from 'components/ListItem';
+import './styles.css';
+import { ListItem } from 'components/domain/ListItem';
+import { type Book, LibraryStoreInterface } from 'types.ts';
 
-export class LibraryStore {
-	library: Book[];
+export class LibraryStore implements LibraryStoreInterface {
+	private library: Book[];
 
 	constructor(library: Book[]) {
 		this.library = library;
 	}
 
-	loadBooksList() {
+	public loadBooksList(): void {
 		const booksList: HTMLElement = document.getElementById('books-list')!;
 		while (booksList.lastChild) {
 			booksList.lastChild.remove();
@@ -17,29 +18,34 @@ export class LibraryStore {
 		this.updatePlaceholderVisibility();
 	}
 
-	addListElement(book: Book) {
+	public addListElement(book: Book): void {
 		const booksList: HTMLElement = document.getElementById('books-list')!;
-		const listItem = new ListItem(book, () => this.removeListElement(book.id), () => this.updateElement(book.id));
+		const listItem = new ListItem(book, () => this.removeListElement(book.id), () => this.updateListElement(book.id));
 		const listItemElement = listItem.render();
 		booksList.appendChild(listItemElement);
+		this.library.push(book);
 	}
 
-	removeListElement(bookId: string): void {
+	public removeListElement(bookId: string): void {
+		const booksList: HTMLElement = document.getElementById('books-list')!;
+		const listItemElement = booksList.querySelector(`[data-id="${bookId}"]`);
+
+		if (listItemElement) {
+			booksList.removeChild(listItemElement);
+		}
+
 		this.library = this.library.filter(book => book.id !== bookId);
-		console.log(this.library);
-		this.loadBooksList();
+		this.updatePlaceholderVisibility();
 	}
 
-	updateElement(bookId: string) {
-		const book = this.library.find(book => book.id === bookId);
+	public updateListElement(bookId: string): void {
+		const book: Book | undefined = this.library.find(book => book.id === bookId);
 		if (book) {
 			book.read = !book.read;
-
-			this.loadBooksList();
 		}
 	}
 
-	updatePlaceholderVisibility() {
+	public updatePlaceholderVisibility(): void {
 		const emptyListPlaceholder: HTMLLIElement = document.querySelector<HTMLLIElement>('.books-list__empty-list-placeholder')!;
 
 		if (this.library.length > 0) {

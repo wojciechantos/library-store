@@ -1,6 +1,6 @@
-import { Button } from 'components/Button';
-import { checkedIcon, ListItemInterface, uncheckedIcon } from 'types.ts';
 import './styles.css';
+import { Button } from 'components/common/Button';
+import { type Book, checkedIcon, ListItemInterface, uncheckedIcon } from 'types.ts';
 
 export class ListItem implements ListItemInterface {
 	id: string;
@@ -11,7 +11,7 @@ export class ListItem implements ListItemInterface {
 	onRemoveClick: () => void;
 	onToggleClick: (itemId: string) => void;
 
-	constructor(item: ListItemInterface, onRemoveClick: () => void, onToggleClick: () => void) {
+	constructor(item: Book, onRemoveClick: () => void, onToggleClick: () => void) {
 		this.id = item.id;
 		this.read = item.read;
 		this.title = item.title;
@@ -28,14 +28,17 @@ export class ListItem implements ListItemInterface {
 	private toggleReadButton(itemId: string): void {
 		this.read = !this.read;
 
-		const readIconElement = document.querySelector(`.list-item[data-id="${this.id}"] .read-icon`)!;
-		readIconElement.innerHTML = this.read ? checkedIcon : uncheckedIcon;
+		const readIconElement: Element | null = document.querySelector(`.list-item[data-id="${this.id}"] .read-icon`)!;
+
+		if (readIconElement) {
+			readIconElement.innerHTML = this.read ? checkedIcon : uncheckedIcon;
+		}
 
 		this.onToggleClick(itemId);
 	}
 
 	public render(): HTMLElement {
-		const listElement: HTMLLIElement = document.createElement('li')!;
+		const listElement: HTMLLIElement = document.createElement('li') as HTMLLIElement;
 		listElement.setAttribute('data-id', this.id);
 		this.addClasses(listElement);
 
