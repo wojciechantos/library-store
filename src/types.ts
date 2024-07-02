@@ -1,9 +1,12 @@
 export const checkedIcon: string = '&#9989;';
 export const uncheckedIcon: string = '&#10060;';
 
-export type ButtonSize = 'sm' | 'md';
-export type ButtonVariant = 'primary' | 'secondary';
+export type ButtonSize = 'xs' | 'sm' | 'md';
+export type ButtonVariant = 'primary' | 'secondary' | 'transparent';
 export type ButtonType = 'button' | 'submit' | 'reset';
+
+export type IconName = 'plus' | 'cross' | 'trash' | 'bookmark';
+
 
 export type Book = {
 	id: string;
@@ -31,7 +34,8 @@ export interface ListItemInterface {
 }
 
 export interface ButtonProps {
-	text: string;
+	text?: string;
+	iconName?: IconName;
 	size?: ButtonSize;
 	type?: ButtonType,
 	onClick?: () => void;

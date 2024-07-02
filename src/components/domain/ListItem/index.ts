@@ -57,15 +57,16 @@ export class ListItem implements ListItemInterface {
 
 		const removeItemButton = new Button({
 			size: 'sm',
-			text: 'Remove book',
+			iconName: 'trash',
 			variant: 'secondary',
 			onClick: this.onRemoveClick
 		});
+
 		const toggleReadButton = new Button({
 			size: 'sm',
 			variant: 'secondary',
 			onClick: () => this.toggleReadButton(this.id),
-			text: this.read ? 'Mark as unread' : 'Mark as read'
+			iconName: 'bookmark',
 		});
 
 		const removeItemButtonElement: HTMLElement = removeItemButton.render();

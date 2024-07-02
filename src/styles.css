@@ -15,6 +15,7 @@
     --button-bg-primary-hover: #702632;
     --button-bg-secondary: #CE6874;
     --button-bg-secondary-hover: #B54356;
+    --button-bg-transparent-hover: #eaeaea;
 
     color: var(--color-primary);
     background-color: #ACB0BD;

@@ -32,7 +32,12 @@ export class Dialog implements DialogInterface {
 	}
 
 	public render(): HTMLDialogElement {
-		const closeDialogButton: HTMLButtonElement = new Button({ text: 'X', onClick: () => this.getDialog().close() }).render();
+		const closeDialogButton: HTMLButtonElement = new Button({
+			size: 'xs',
+			iconName: 'cross',
+			variant: 'transparent',
+			onClick: () => this.getDialog().close()
+		}).render();
 
 		const dialogElement: HTMLDialogElement = document.createElement('dialog') as HTMLDialogElement;
 		dialogElement.classList.add('dialog');
