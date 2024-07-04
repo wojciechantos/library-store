@@ -33,7 +33,7 @@ export class AddBookForm {
 		});
 
 		this.storeInstance.addListElement({
-			id: uuidv4(),
+			id: `book-${uuidv4()}`,
 			title: bookData.title as string,
 			author: bookData.author as string,
 			pages: Number(bookData.pages),

@@ -20,4 +20,4 @@ And finally, run `npm run dev` to run the app.
 ### Books storage
 
 > [!IMPORTANT]  
-> For now the books aren't stored permanently. The feature will be introduced in the future version. 
+> As a temporary solution the books are stored in the browser's local storage. The database will be implemented in the future version as well as authorization.
