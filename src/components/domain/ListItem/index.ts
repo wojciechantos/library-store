@@ -59,12 +59,14 @@ export class ListItem implements ListItemInterface {
 			size: 'sm',
 			iconName: 'trash',
 			variant: 'secondary',
+			text: 'Remove book',
 			onClick: this.onRemoveClick
 		});
 
 		const toggleReadButton = new Button({
 			size: 'sm',
 			variant: 'secondary',
+			text: 'Mark book',
 			onClick: () => this.toggleReadButton(this.id),
 			iconName: 'bookmark',
 		});

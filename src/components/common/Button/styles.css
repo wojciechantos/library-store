@@ -1,13 +1,13 @@
 .button {
-    gap: 4px;
+    gap: 6px;
     border: none;
     display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 5px;
     width: fit-content;
+    align-items: center;
+    justify-content: center;
 }
 
 .button--xs {
@@ -38,12 +38,12 @@
 }
 
 .button--primary {
-    color: #FFFFFA;
+    color: var(--grey-500);
     transition: background-color 0.15s ease;
     background-color: var(--button-bg-primary);
 
     .icon {
-        fill: #FFFFFA;
+        fill: var(--grey-500);
     }
 
     &:hover, &:active {
@@ -52,12 +52,12 @@
 }
 
 .button--secondary {
-    color: #FFFFFA;
+    color: var(--grey-500);
     transition: background-color 0.15s ease;
     background-color: var(--button-bg-secondary);
 
     .icon {
-        fill: #FFFFFA;
+        fill: var(--grey-500);
     }
 
     &:hover, &:active {

@@ -1,34 +1,64 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
+    font-style: normal;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --color-primary: #313638;
-    --color-primary-hover: #5b5b5b;
-    --background-color-light: #FFFFFA;
+    --grey-100: #313638;
+    --grey-200: #5b5b5b;
+    --grey-300: #737373;
+    --grey-400: #eaeaea;
+    --grey-500: #FFFFFA;
 
-    --button-bg-primary: #912F40;
-    --button-bg-primary-hover: #702632;
-    --button-bg-secondary: #CE6874;
-    --button-bg-secondary-hover: #B54356;
-    --button-bg-transparent-hover: #eaeaea;
+    --ruby-100: #702632;
+    --ruby-200: #912F40;
+    --ruby-300: #B54356;
+    --ruby-400: #CE6874;
 
+    --polar-mist: #ACB0BD;
+
+    /* Domain */
     color: var(--color-primary);
-    background-color: #ACB0BD;
+    background-color: var(--polar-mist);
+
+    --color-primary: var(--grey-100);
+    --color-primary-hover: var(--grey-200);
+    --background-color-light: var(--grey-500);
+
+    /* Button */
+    --button-bg-primary: var(--ruby-200);
+    --button-bg-primary-hover: var(--ruby-100);
+
+    --button-bg-secondary: var(--ruby-400);
+    --button-bg-secondary-hover: var(--ruby-300);
+
+    --button-bg-transparent-hover: var(--grey-400);
 
     /* Input */
-    --border-color: #ACB0BD;
-    --border-color-hover: #737373;
+    --border-color: var(--polar-mist);
+    --border-color-hover: var(--grey-300);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+button {
+    font-family: "Poppins", sans-serif;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+h2, h3, h4, h5, h6 {
+    font-weight: 500;
 }
 
 #app-container {
@@ -42,23 +72,21 @@
     justify-content: center;
 }
 
+label {
+    font-size: 14px;
+}
+
 main {
     width: 100%;
     max-width: 560px;
     margin-bottom: 120px;
 }
 
-.header-wrapper {
-    display: flex;
-    margin-bottom: 16px;
-    justify-content: space-between;
-}
-
 footer {
     gap: 6px;
     width: 100%;
-    display: flex;
     bottom: 24px;
+    display: flex;
     position: absolute;
     align-items: center;
     flex-direction: column;
@@ -74,6 +102,12 @@ a {
         text-decoration: underline;
         color: var(--color-primary-hover);
     }
+}
+
+.header-wrapper {
+    display: flex;
+    margin-bottom: 16px;
+    justify-content: space-between;
 }
 
 .link-wrapper {

@@ -3,7 +3,7 @@
     padding: 24px;
     border-radius: 8px;
     flex-direction: column;
-    box-shadow: 2px 2px 12px #313638;
+    box-shadow: 2px 2px 12px var(--color-primary);
     background-color: var(--background-color-light);
 }
 
@@ -13,11 +13,4 @@
     display: flex;
     list-style: none;
     flex-direction: column;
-}
-
-.books-list__item {
-    padding: 8px;
-    display: block;
-    border-radius: 4px;
-    border: 2px solid #313638;
 }

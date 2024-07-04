@@ -6,6 +6,7 @@ export class Button {
 	private text?: string;
 	private size?: ButtonSize;
 	private type?: ButtonType;
+	private className?: string;
 	private iconName?: IconName;
 	private onClick?: () => void;
 	private variant?: ButtonVariant;
@@ -16,11 +17,16 @@ export class Button {
 		this.iconName = props.iconName;
 		this.size = props.size || 'md';
 		this.type = props.type || 'button';
+		this.className = props.className || '';
 		this.variant = props.variant || 'primary';
 	}
 
 	private addClasses(element: HTMLButtonElement): void {
 		element.classList.add('button', `button--${this.size}`, `button--${this.variant}`);
+
+		if(this.className) {
+			element.classList.add(`${this.className}`);
+		}
 	}
 
 	public render(): HTMLButtonElement {

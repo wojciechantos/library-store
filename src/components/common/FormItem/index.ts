@@ -5,45 +5,34 @@ export class FormItem {
 	private name: string;
 	private label: string;
 	private type?: string
+	private maxLength?: number;
 	private isRequired?: boolean;
 
 	constructor(props: FormItemProps) {
 		this.name = props.name;
 		this.type = props.type || 'text';
+		this.maxLength = props.maxLength;
 		this.label = props.label;
 		this.isRequired = props.isRequired || false;
 	}
 
 	public render(): HTMLDivElement | HTMLInputElement {
-		if(this.type === 'submit') {
-			return this.generateSubmitItem();
-		}
-
 		const itemWrapper: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
-		if(this.type === 'checkbox') {
+		if (this.type === 'checkbox') {
 			itemWrapper.classList.add('form-item--inline');
 			return this.generateCheckBoxItem(itemWrapper);
 		}
 
 		itemWrapper.classList.add('form-item');
-		return this.generateTextItem(itemWrapper);
-	}
-
-	private generateSubmitItem(): HTMLInputElement {
-		const item: HTMLInputElement = document.createElement('input') as HTMLInputElement;
-		item.name = this.name;
-		item.type = 'submit';
-		item.value = this.label;
-		item.classList.add('form-item__input-submit');
-		return item;
+		return this.generateItem(itemWrapper);
 	}
 
 	private generateCheckBoxItem(itemWrapper: HTMLDivElement): HTMLDivElement {
 		const id = `form-item__input-checkbox-${this.name}`;
 
 		itemWrapper.innerHTML = `
-            <label for="${id}">${this.label}</label>
+            <label for="${id}">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
             <input id="${id}" class="form-item__input-checkbox">
         `;
 
@@ -59,10 +48,10 @@ export class FormItem {
 		return itemWrapper;
 	}
 
-	private generateTextItem(itemWrapper: HTMLDivElement): HTMLDivElement {
+	private generateItem(itemWrapper: HTMLDivElement): HTMLDivElement {
 		const id = `form-item__input--${this.name}`;
 		itemWrapper.innerHTML = `
-            <label for="${id}">${this.label}</label>
+            <label for="${id}">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
             <input id="${id}" class="form-item__input">
         `;
 
@@ -72,6 +61,19 @@ export class FormItem {
 			inputElement.type = this.type || 'text';
 			inputElement.name = this.name;
 			inputElement.required = this.isRequired !== undefined ? this.isRequired : false;
+
+			if(this.maxLength) {
+				inputElement.setAttribute('maxlength', this.maxLength.toString());
+			}
+
+			if (this.type === 'number') {
+				inputElement.setAttribute('min', '0');
+				inputElement.setAttribute('onkeydown', 'return event.keyCode !== 69');
+
+				if(this.maxLength) {
+					inputElement.setAttribute('max', this.maxLength.toString());
+				}
+			}
 		}
 
 		return itemWrapper;

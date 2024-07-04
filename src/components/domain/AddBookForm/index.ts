@@ -14,11 +14,11 @@ export class AddBookForm {
 	}
 
 	private getFormItems(): (HTMLDivElement | HTMLInputElement | HTMLButtonElement)[] {
-		const formSubmitButton = new Button({ text: 'Add book', type: 'submit' }).render();
-		const titleItem: HTMLDivElement = new FormItem({ name: 'title', label: 'Title', type: 'text', isRequired: true }).render();
+		const titleItem: HTMLDivElement = new FormItem({ name: 'title', label: 'Title', type: 'text', isRequired: true, maxLength: 100 }).render();
 		const readItem: HTMLDivElement = new FormItem({  name: 'read', label: 'Read', type: 'checkbox', isRequired: false }).render();
-		const authorItem: HTMLDivElement = new FormItem({  name: 'author', label: 'Author', type: 'text', isRequired: true }).render();
-		const pagesItem: HTMLDivElement = new FormItem({  name: 'pages', label: 'Number of pages', type: 'number', isRequired: false }).render();
+		const authorItem: HTMLDivElement = new FormItem({  name: 'author', label: 'Author', type: 'text', isRequired: true, maxLength: 100 }).render();
+		const pagesItem: HTMLDivElement = new FormItem({  name: 'pages', label: 'Number of pages', type: 'number', isRequired: false, maxLength: 10000 }).render();
+		const formSubmitButton = new Button({ text: 'Add book', type: 'submit', className: 'add-book-form__submit-button' }).render();
 
 		return [titleItem, authorItem, pagesItem, readItem, formSubmitButton];
 	}

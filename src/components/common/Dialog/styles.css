@@ -35,11 +35,12 @@
 }
 
 .dialog__content {
-    gap: 8px;
+    gap: 16px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    color: var(--color-primary)
 }
 
 .dialog__header {

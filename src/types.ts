@@ -35,9 +35,10 @@ export interface ListItemInterface {
 
 export interface ButtonProps {
 	text?: string;
-	iconName?: IconName;
 	size?: ButtonSize;
 	type?: ButtonType,
+	className?: string;
+	iconName?: IconName;
 	onClick?: () => void;
 	variant?: ButtonVariant;
 }
@@ -46,6 +47,7 @@ export interface FormItemProps {
 	name: string;
 	type?: string;
 	label: string;
+	maxLength?: number;
 	isRequired?: boolean;
 }
 
