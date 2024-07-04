@@ -54,7 +54,7 @@ export class App {
 		addNewBookDialog.dialogContent = addBookForm.render();
 		const addNewBookDialogElement: HTMLDialogElement = addNewBookDialog.render();
 
-		const addNewBookButton = new Button({
+		const addNewBookButton: HTMLButtonElement = new Button({
 			iconName: 'plus',
 			text: 'Add new book',
 			onClick: () => addNewBookDialog.getDialog().showModal()

@@ -13,12 +13,12 @@ export class Button {
 
 	constructor(props: ButtonProps) {
 		this.text = props.text || '';
-		this.onClick = props.onClick;
-		this.iconName = props.iconName;
 		this.size = props.size || 'md';
 		this.type = props.type || 'button';
 		this.className = props.className || '';
+		this.onClick = props.onClick || undefined;
 		this.variant = props.variant || 'primary';
+		this.iconName = props.iconName || undefined;
 	}
 
 	private addClasses(element: HTMLButtonElement): void {

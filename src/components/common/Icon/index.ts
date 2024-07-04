@@ -14,7 +14,7 @@ export class Icon {
 	}
 
 	public render(): HTMLElement | null {
-		const icon = this.resolveIcon(this.iconName);
+		const icon: string | null = this.resolveIcon(this.iconName);
 
 		if (!icon) {
 			return null;

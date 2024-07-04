@@ -18,17 +18,17 @@ export class AddBookForm {
 		const readItem: HTMLDivElement = new FormItem({  name: 'read', label: 'Read', type: 'checkbox', isRequired: false }).render();
 		const authorItem: HTMLDivElement = new FormItem({  name: 'author', label: 'Author', type: 'text', isRequired: true, maxLength: 100 }).render();
 		const pagesItem: HTMLDivElement = new FormItem({  name: 'pages', label: 'Number of pages', type: 'number', isRequired: false, maxLength: 10000 }).render();
-		const formSubmitButton = new Button({ text: 'Add book', type: 'submit', className: 'add-book-form__submit-button' }).render();
+		const formSubmitButton: HTMLButtonElement = new Button({ text: 'Add book', type: 'submit', className: 'add-book-form__submit-button' }).render();
 
 		return [titleItem, authorItem, pagesItem, readItem, formSubmitButton];
 	}
 
 	private handleSubmitForm(e: SubmitEvent, form: HTMLFormElement): void {
 		e.preventDefault();
-		const formData = new FormData(e.target as HTMLFormElement);
+		const formData: FormData = new FormData(e.target as HTMLFormElement);
 		const bookData: { [key: string]: FormDataEntryValue } = {};
 
-		formData.forEach((value, key) => {
+		formData.forEach((value: FormDataEntryValue, key: string) => {
 			bookData[key] = value;
 		});
 
@@ -50,7 +50,7 @@ export class AddBookForm {
 		form.classList.add('add-book-form');
 		form.setAttribute('id', 'add-book-form');
 		form.method = 'dialog';
-		const formItems = this.getFormItems();
+		const formItems: (HTMLDivElement | HTMLInputElement | HTMLButtonElement)[] = this.getFormItems();
 
 		formItems.forEach((item: HTMLDivElement | HTMLInputElement | HTMLButtonElement) => {
 			form.appendChild(item);
