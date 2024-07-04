@@ -5,7 +5,7 @@
 This is a simple library app to store the books that you already (or plan to) read. You can add new books with some basic info, mark them as read or unread and remove them.
 The app is written in pure TypeScript with OOP methodology, no frameworks were used. The project is only powered by Vite to speed up the build and run processes.
 
-You can check it out here:
+You can check it out here: https://library-store-aweb.netlify.app
 
 or install it on your local machine as described below.
 
