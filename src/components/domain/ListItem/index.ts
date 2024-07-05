@@ -53,14 +53,15 @@ export class ListItem implements ListItemInterface {
 			</div>
 		`;
 
-		const buttonsWrapper: HTMLDivElement = listElement.querySelector<HTMLDivElement>('.list-item__buttons-wrapper')!;
+		const buttonsWrapper: HTMLDivElement =
+			listElement.querySelector<HTMLDivElement>('.list-item__buttons-wrapper')!;
 
 		const removeItemButton = new Button({
 			size: 'sm',
 			iconName: 'trash',
 			variant: 'secondary',
 			text: 'Remove book',
-			onClick: this.onRemoveClick
+			onClick: this.onRemoveClick,
 		});
 
 		const toggleReadButton = new Button({

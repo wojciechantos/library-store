@@ -16,7 +16,7 @@ export class LibraryStore implements LibraryStoreInterface {
 			booksList.lastChild.remove();
 		}
 
-		for (let i: number = 0; i < localStorage.length; i++) {
+		for (let i = 0; i < localStorage.length; i++) {
 			const key: string | null = localStorage.key(i);
 			if (key?.startsWith('book-')) {
 				const keyValue: string | null = localStorage.getItem(key);
@@ -32,7 +32,11 @@ export class LibraryStore implements LibraryStoreInterface {
 
 	public addListElement(book: Book): void {
 		const booksList: HTMLElement = document.getElementById('books-list')!;
-		const listItem = new ListItem(book, () => this.removeListElement(book.id), () => this.updateListElementStatus(book.id));
+		const listItem = new ListItem(
+			book,
+			() => this.removeListElement(book.id),
+			() => this.updateListElementStatus(book.id)
+		);
 		const listItemElement: HTMLElement = listItem.render();
 		booksList.appendChild(listItemElement);
 		this.library.push(book);
@@ -46,7 +50,7 @@ export class LibraryStore implements LibraryStoreInterface {
 		if (listItemElement) {
 			localStorage.removeItem(bookId);
 			booksList.removeChild(listItemElement);
-			this.library = this.library.filter(book => book.id !== bookId);
+			this.library = this.library.filter((book) => book.id !== bookId);
 			this.updatePlaceholderVisibility();
 		}
 	}
@@ -66,7 +70,9 @@ export class LibraryStore implements LibraryStoreInterface {
 	}
 
 	public updatePlaceholderVisibility(): void {
-		const emptyListPlaceholder: HTMLLIElement = document.querySelector<HTMLLIElement>('.books-list__empty-list-placeholder')!;
+		const emptyListPlaceholder: HTMLLIElement = document.querySelector<HTMLLIElement>(
+			'.books-list__empty-list-placeholder'
+		)!;
 
 		if (this.library.length > 0) {
 			if (emptyListPlaceholder && emptyListPlaceholder.style) {
@@ -77,5 +83,5 @@ export class LibraryStore implements LibraryStoreInterface {
 				emptyListPlaceholder.style.display = 'block';
 			}
 		}
-	};
+	}
 }

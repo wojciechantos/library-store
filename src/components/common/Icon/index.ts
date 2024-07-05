@@ -6,7 +6,7 @@ export class Icon {
 	iconName: IconName;
 
 	constructor(iconName: IconName) {
-		this.iconName = iconName
+		this.iconName = iconName;
 	}
 
 	private resolveIcon(iconName: IconName): string {
@@ -21,7 +21,7 @@ export class Icon {
 		}
 
 		const iconComponent: HTMLDivElement = document.createElement('div') as HTMLDivElement;
-		iconComponent.insertAdjacentHTML("afterbegin", icon);
+		iconComponent.insertAdjacentHTML('afterbegin', icon);
 
 		const svgElement: SVGElement | null = iconComponent.querySelector('svg');
 		iconComponent.classList.add('icon');

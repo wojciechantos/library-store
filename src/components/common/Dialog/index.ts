@@ -5,9 +5,6 @@ import { Button } from 'components/common/Button';
 export class Dialog implements DialogInterface {
 	private content?: HTMLElement | string;
 
-	constructor() {
-	}
-
 	public set dialogContent(dialogContent: HTMLElement | string) {
 		this.content = dialogContent;
 	}
@@ -25,7 +22,7 @@ export class Dialog implements DialogInterface {
 
 		dialogElement.close = (): void => {
 			dialogElement.classList.remove('show');
-			setTimeout(() => oldClose.call(dialogElement), 20)
+			setTimeout(() => oldClose.call(dialogElement), 20);
 		};
 
 		return dialogElement;
@@ -36,7 +33,7 @@ export class Dialog implements DialogInterface {
 			size: 'xs',
 			iconName: 'cross',
 			variant: 'transparent',
-			onClick: () => this.getDialog().close()
+			onClick: () => this.getDialog().close(),
 		}).render();
 
 		const dialogElement: HTMLDialogElement = document.createElement('dialog') as HTMLDialogElement;

@@ -1,6 +1,6 @@
 import './styles.css';
 import { Icon } from 'components/common/Icon';
-import { ButtonProps, type ButtonVariant, type ButtonSize, type ButtonType, type IconName } from 'types.ts';
+import { ButtonProps, type IconName, type ButtonSize, type ButtonType, type ButtonVariant } from 'types.ts';
 
 export class Button {
 	private text?: string;
@@ -24,7 +24,7 @@ export class Button {
 	private addClasses(element: HTMLButtonElement): void {
 		element.classList.add('button', `button--${this.size}`, `button--${this.variant}`);
 
-		if(this.className) {
+		if (this.className) {
 			element.classList.add(`${this.className}`);
 		}
 	}

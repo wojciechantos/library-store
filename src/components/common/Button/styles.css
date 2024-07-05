@@ -1,74 +1,77 @@
 .button {
-    gap: 6px;
-    border: none;
-    display: flex;
-    cursor: pointer;
-    font-weight: 500;
-    border-radius: 5px;
-    width: fit-content;
-    align-items: center;
-    justify-content: center;
+	gap: 6px;
+	border: none;
+	display: flex;
+	cursor: pointer;
+	font-weight: 500;
+	border-radius: 5px;
+	width: fit-content;
+	align-items: center;
+	justify-content: center;
 }
 
 .button--xs {
-    padding: 6px;
+	padding: 6px;
 
-    .icon {
-        width: 12px;
-        height: 12px;
-    }
+	.icon {
+		width: 12px;
+		height: 12px;
+	}
 }
 
 .button--sm {
-    padding: 6px 12px;
+	padding: 6px 12px;
 
-    .icon {
-        width: 18px;
-        height: 18px;
-    }
+	.icon {
+		width: 18px;
+		height: 18px;
+	}
 }
 
 .button--md {
-    padding: 8px 16px;
+	padding: 8px 16px;
 
-    .icon {
-        width: 24px;
-        height: 24px;
-    }
+	.icon {
+		width: 24px;
+		height: 24px;
+	}
 }
 
 .button--primary {
-    color: var(--grey-500);
-    transition: background-color 0.15s ease;
-    background-color: var(--button-bg-primary);
+	color: var(--grey-500);
+	transition: background-color 0.15s ease;
+	background-color: var(--button-bg-primary);
 
-    .icon {
-        fill: var(--grey-500);
-    }
+	.icon {
+		fill: var(--grey-500);
+	}
 
-    &:hover, &:active {
-        background-color: var(--button-bg-primary-hover);
-    }
+	&:hover,
+	&:active {
+		background-color: var(--button-bg-primary-hover);
+	}
 }
 
 .button--secondary {
-    color: var(--grey-500);
-    transition: background-color 0.15s ease;
-    background-color: var(--button-bg-secondary);
+	color: var(--grey-500);
+	transition: background-color 0.15s ease;
+	background-color: var(--button-bg-secondary);
 
-    .icon {
-        fill: var(--grey-500);
-    }
+	.icon {
+		fill: var(--grey-500);
+	}
 
-    &:hover, &:active {
-        background-color: var(--button-bg-secondary-hover);
-    }
+	&:hover,
+	&:active {
+		background-color: var(--button-bg-secondary-hover);
+	}
 }
 
 .button--transparent {
-    background: none;
+	background: none;
 
-    &:hover, &:active {
-        background-color: var(--button-bg-transparent-hover);
-    }
+	&:hover,
+	&:active {
+		background-color: var(--button-bg-transparent-hover);
+	}
 }

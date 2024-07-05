@@ -4,7 +4,7 @@ import { FormItemProps } from 'types.ts';
 export class FormItem {
 	private name: string;
 	private label: string;
-	private type?: string
+	private type?: string;
 	private maxLength?: number;
 	private isRequired?: boolean;
 
@@ -38,11 +38,10 @@ export class FormItem {
 
 		const inputElement: HTMLInputElement = itemWrapper.querySelector(`#${id}`) as HTMLInputElement;
 
-		if(inputElement) {
+		if (inputElement) {
 			inputElement.name = this.name;
 			inputElement.type = 'checkbox';
 			inputElement.required = this.isRequired !== undefined ? this.isRequired : false;
-
 		}
 
 		return itemWrapper;
@@ -62,7 +61,7 @@ export class FormItem {
 			inputElement.name = this.name;
 			inputElement.required = this.isRequired !== undefined ? this.isRequired : false;
 
-			if(this.maxLength) {
+			if (this.maxLength) {
 				inputElement.setAttribute('maxlength', this.maxLength.toString());
 			}
 
@@ -70,7 +69,7 @@ export class FormItem {
 				inputElement.setAttribute('min', '0');
 				inputElement.setAttribute('onkeydown', 'return event.keyCode !== 69');
 
-				if(this.maxLength) {
+				if (this.maxLength) {
 					inputElement.setAttribute('max', this.maxLength.toString());
 				}
 			}

@@ -1,57 +1,57 @@
 .dialog {
-    top: 10%;
-    left: 50%;
-    opacity: 0;
-    width: 100%;
-    padding: 16px;
-    border: 1px solid;
-    position: absolute;
-    border-radius: 8px;
-    flex-direction: column;
-    transform: translate(-50%);
-    transition: opacity 0.15s ease;
-    background-color: var(--background-color-light);
+	top: 10%;
+	left: 50%;
+	opacity: 0;
+	width: 100%;
+	padding: 16px;
+	border: 1px solid;
+	position: absolute;
+	border-radius: 8px;
+	flex-direction: column;
+	transform: translate(-50%);
+	transition: opacity 0.15s ease;
+	background-color: var(--background-color-light);
 
-    @media (min-width: 609px) {
-        width: 560px;
-    }
+	@media (min-width: 609px) {
+		width: 560px;
+	}
 
-    [open] {
-        display: flex;
-    }
+	[open] {
+		display: flex;
+	}
 
-    &.show {
-        opacity: 1;
-    }
+	&.show {
+		opacity: 1;
+	}
 
-    &::backdrop {
-        background-color: #00000000;
-        transition: background-color 0.15s ease;
-    }
+	&::backdrop {
+		background-color: #00000000;
+		transition: background-color 0.15s ease;
+	}
 
-    &.show::backdrop {
-        background-color: #00000088;
-    }
+	&.show::backdrop {
+		background-color: #00000088;
+	}
 }
 
 .dialog__content {
-    gap: 16px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    color: var(--color-primary)
+	gap: 16px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	color: var(--color-primary);
 }
 
 .dialog__header {
-    gap: 8px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+	gap: 8px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .dialog__body {
-    width: 100%;
+	width: 100%;
 }

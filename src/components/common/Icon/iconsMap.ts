@@ -9,5 +9,5 @@ export const iconsMap: Record<IconName, string> = {
 	plus: plusIcon,
 	cross: crossIcon,
 	trash: trashIcon,
-	bookmark: bookmarkIcon
-}
+	bookmark: bookmarkIcon,
+};

@@ -1,43 +1,42 @@
 .list-item {
-    gap: 8px;
-    width: 100%;
-    padding: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 6px;
-    flex-direction: column;
-    justify-content: space-between;
-    background: var(--grey-400);
+	gap: 8px;
+	width: 100%;
+	padding: 8px;
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: 6px;
+	flex-direction: column;
+	justify-content: space-between;
+	background: var(--grey-400);
 
-
-    @media (min-width: 609px) {
-        flex-direction: row;
-    }
+	@media (min-width: 609px) {
+		flex-direction: row;
+	}
 }
 
 .list-item__description-wrapper {
-    gap: 4px;
-    width: 100%;
-    display: flex;
-    word-break: break-all;
-    flex-direction: column;
+	gap: 4px;
+	width: 100%;
+	display: flex;
+	word-break: break-all;
+	flex-direction: column;
 
-    @media (min-width: 609px) {
-        width: 68%;
-    }
+	@media (min-width: 609px) {
+		width: 68%;
+	}
 }
 
 .list-item__buttons-wrapper {
-    gap: 8px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+	gap: 8px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
 
-    @media (min-width: 609px) {
-        width: fit-content;
-        align-items: flex-end;
-        flex-direction: column;
-        justify-content: center;
-    }
+	@media (min-width: 609px) {
+		width: fit-content;
+		align-items: flex-end;
+		flex-direction: column;
+		justify-content: center;
+	}
 }

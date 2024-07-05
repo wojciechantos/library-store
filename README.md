@@ -1,4 +1,4 @@
-# Library Store app by @wojciechantos 
+# Library Store app by @wojciechantos
 
 ---
 

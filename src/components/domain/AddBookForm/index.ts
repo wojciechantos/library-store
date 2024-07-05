@@ -14,11 +14,38 @@ export class AddBookForm {
 	}
 
 	private getFormItems(): (HTMLDivElement | HTMLInputElement | HTMLButtonElement)[] {
-		const titleItem: HTMLDivElement = new FormItem({ name: 'title', label: 'Title', type: 'text', isRequired: true, maxLength: 100 }).render();
-		const readItem: HTMLDivElement = new FormItem({  name: 'read', label: 'Read', type: 'checkbox', isRequired: false }).render();
-		const authorItem: HTMLDivElement = new FormItem({  name: 'author', label: 'Author', type: 'text', isRequired: true, maxLength: 100 }).render();
-		const pagesItem: HTMLDivElement = new FormItem({  name: 'pages', label: 'Number of pages', type: 'number', isRequired: false, maxLength: 10000 }).render();
-		const formSubmitButton: HTMLButtonElement = new Button({ text: 'Add book', type: 'submit', className: 'add-book-form__submit-button' }).render();
+		const titleItem: HTMLDivElement = new FormItem({
+			name: 'title',
+			label: 'Title',
+			type: 'text',
+			isRequired: true,
+			maxLength: 100,
+		}).render();
+		const readItem: HTMLDivElement = new FormItem({
+			name: 'read',
+			label: 'Read',
+			type: 'checkbox',
+			isRequired: false,
+		}).render();
+		const authorItem: HTMLDivElement = new FormItem({
+			name: 'author',
+			label: 'Author',
+			type: 'text',
+			isRequired: true,
+			maxLength: 100,
+		}).render();
+		const pagesItem: HTMLDivElement = new FormItem({
+			name: 'pages',
+			label: 'Number of pages',
+			type: 'number',
+			isRequired: false,
+			maxLength: 10000,
+		}).render();
+		const formSubmitButton: HTMLButtonElement = new Button({
+			text: 'Add book',
+			type: 'submit',
+			className: 'add-book-form__submit-button',
+		}).render();
 
 		return [titleItem, authorItem, pagesItem, readItem, formSubmitButton];
 	}
@@ -26,7 +53,7 @@ export class AddBookForm {
 	private handleSubmitForm(e: SubmitEvent, form: HTMLFormElement): void {
 		e.preventDefault();
 		const formData: FormData = new FormData(e.target as HTMLFormElement);
-		const bookData: { [key: string]: FormDataEntryValue } = {};
+		const bookData: Record<string, FormDataEntryValue> = {};
 
 		formData.forEach((value: FormDataEntryValue, key: string) => {
 			bookData[key] = value;
@@ -37,12 +64,12 @@ export class AddBookForm {
 			title: bookData.title as string,
 			author: bookData.author as string,
 			pages: Number(bookData.pages),
-			read: bookData.read === 'on'
+			read: bookData.read === 'on',
 		});
 
 		this.storeInstance.updatePlaceholderVisibility();
 		form.reset();
-		this.dialogInstance.getDialog().close()
+		this.dialogInstance.getDialog().close();
 	}
 
 	public render(): HTMLFormElement {
@@ -54,7 +81,7 @@ export class AddBookForm {
 
 		formItems.forEach((item: HTMLDivElement | HTMLInputElement | HTMLButtonElement) => {
 			form.appendChild(item);
-		})
+		});
 
 		form.addEventListener('submit', (e: SubmitEvent) => this.handleSubmitForm(e, form));
 

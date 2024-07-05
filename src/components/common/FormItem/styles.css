@@ -1,62 +1,64 @@
 .form-item {
-    gap: 4px;
-    display: flex;
-    flex-direction: column;
+	gap: 4px;
+	display: flex;
+	flex-direction: column;
 }
 
 .form-item--inline {
-    gap: 8px;
-    display: flex;
+	gap: 8px;
+	display: flex;
 }
 
 .form-item__required-mark {
-    color: red;
+	color: red;
 }
 
 .form-item__input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    transition: border 0.15s ease;
-    border: 1px solid var(--border-color);
+	width: 100%;
+	padding: 8px;
+	border-radius: 4px;
+	transition: border 0.15s ease;
+	border: 1px solid var(--border-color);
 
-    &:hover, &:active {
-        border: 1px solid var(--border-color-hover);
-    }
+	&:hover,
+	&:active {
+		border: 1px solid var(--border-color-hover);
+	}
 }
 
 .form-item__input-checkbox {
-    width: 20px;
-    accent-color: var(--button-bg-primary);
+	width: 20px;
+	accent-color: var(--button-bg-primary);
 }
 
 .form-item__input-submit {
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    padding: 8px 40px;
-    border-radius: 5px;
-    color: var(--grey-500);
-    transition: background-color 0.15s ease;
-    background-color: var(--button-bg-primary);
+	width: 100%;
+	border: none;
+	cursor: pointer;
+	font-weight: 600;
+	padding: 8px 40px;
+	border-radius: 5px;
+	color: var(--grey-500);
+	transition: background-color 0.15s ease;
+	background-color: var(--button-bg-primary);
 
-    &:hover, &:active {
-        background-color: var(--button-bg-primary-hover);
-    }
+	&:hover,
+	&:active {
+		background-color: var(--button-bg-primary-hover);
+	}
 
-    @media (min-width: 609px) {
-        margin: 0 auto;
-        width: fit-content;
-    }
+	@media (min-width: 609px) {
+		margin: 0 auto;
+		width: fit-content;
+	}
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
-input[type=number] {
-    -moz-appearance: textfield;
+input[type='number'] {
+	-moz-appearance: textfield;
 }
