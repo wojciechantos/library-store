@@ -1,64 +1,71 @@
 import { assert } from 'vitest';
 import { Dialog } from './index.ts';
+import { mountDOMWithElement } from 'helpers/mountDOMWithElement.ts';
 
-test('should render empty dialog with no custom title or content', () => {
+describe('Dialog component with default configuration', () => {
 	const dialog = new Dialog();
-	const dialogElement: HTMLDialogElement = dialog.render();
+	let dialogRender: HTMLDialogElement;
 
-	assert.ok(dialogElement);
-	assert.strictEqual(dialogElement.classList.contains('dialog'), true);
-	assert.strictEqual(dialogElement.getElementsByClassName('dialog__content').length, 1);
-	assert.strictEqual(dialogElement.getElementsByClassName('dialog__header').length, 1);
-	assert.strictEqual(dialogElement.getElementsByClassName('dialog__body').length, 1);
+	beforeAll(() => {
+		dialogRender = dialog.render();
+		mountDOMWithElement(dialogRender);
+	});
 
-	const dialogHeader: HTMLDivElement = dialogElement.querySelector('.dialog__header')!;
-	assert.strictEqual(dialogHeader.getElementsByClassName('dialog__close-button').length, 1);
-	assert.strictEqual(dialogHeader.getElementsByTagName('h2').length, 0);
+	test('should render Dialog component with no custom title or content', () => {
+		assert.strictEqual(dialogRender.classList.contains('dialog'), true);
+		assert.strictEqual(dialogRender.getElementsByClassName('dialog__content').length, 1);
+		assert.strictEqual(dialogRender.getElementsByClassName('dialog__header').length, 1);
+		assert.strictEqual(dialogRender.getElementsByClassName('dialog__body').length, 1);
 
-	const dialogBody: HTMLDivElement = dialogElement.querySelector('.dialog__body')!;
-	assert.strictEqual(dialogBody.innerHTML, '');
+		const dialogHeader: HTMLDivElement = dialogRender.querySelector('.dialog__header')!;
+		assert.strictEqual(dialogHeader.getElementsByClassName('dialog__close-button').length, 1);
+		assert.strictEqual(dialogHeader.getElementsByTagName('h2').length, 0);
+
+		const dialogBody: HTMLDivElement = dialogRender.querySelector('.dialog__body')!;
+		assert.strictEqual(dialogBody.innerHTML, '');
+	});
+
+	test('should correctly open Dialog component and respond to close button click', () => {
+		dialog.getDialog().showModal();
+		assert.strictEqual(dialogRender.classList.contains('show'), true);
+
+		const closeButton: HTMLButtonElement = dialogRender.querySelector('.dialog__close-button')!;
+		closeButton.click();
+
+		assert.strictEqual(dialogRender.classList.contains('show'), false);
+	});
 });
 
-test('should render dialog with custom title and HTML content', () => {
+describe('Dialog component with custom title and content', () => {
 	const dialog = new Dialog('Custom title');
 
-	const dialogContent: HTMLDivElement = document.createElement('div');
-	dialogContent.textContent = 'Dialog test content';
-	dialog.dialogContent = dialogContent;
+	beforeAll(() => {
+		mountDOMWithElement(dialog.render());
+	});
 
-	const dialogElement: HTMLDialogElement = dialog.render();
+	test('should render Dialog component with custom title', () => {
+		const dialogRender: HTMLDialogElement = dialog.render();
 
-	const dialogHeader: HTMLDivElement = dialogElement.querySelector('.dialog__header')!;
-	assert.strictEqual(dialogHeader.textContent?.trim(), 'Custom title');
+		const dialogHeader: HTMLDivElement = dialogRender.querySelector('.dialog__header')!;
+		assert.strictEqual(dialogHeader.textContent?.trim(), 'Custom title');
+	});
 
-	const dialogBody: HTMLDivElement = dialogElement.querySelector('.dialog__body')!;
-	assert.strictEqual(dialogBody.innerHTML.includes(`<div>Dialog test content</div>`), true);
-});
+	test('should render Dialog component with custom string content', () => {
+		dialog.dialogContent = 'Test string content';
 
-test('should render dialog with custom string content', () => {
-	const dialog = new Dialog();
-	dialog.dialogContent = 'Test string content';
+		const dialogRender: HTMLDialogElement = dialog.render();
 
-	const dialogElement: HTMLDialogElement = dialog.render();
+		const dialogBody: HTMLDivElement = dialogRender.querySelector('.dialog__body')!;
+		assert.strictEqual(dialogBody.textContent?.trim(), 'Test string content');
+	});
 
-	const dialogBody: HTMLDivElement = dialogElement.querySelector('.dialog__body')!;
-	assert.strictEqual(dialogBody.textContent?.trim(), 'Test string content');
-});
+	test('should render Dialog component with custom HTML content', () => {
+		const dialogContent: HTMLDivElement = document.createElement('div');
+		dialogContent.textContent = 'Dialog test content';
+		dialog.dialogContent = dialogContent;
+		const dialogRender: HTMLDialogElement = dialog.render();
 
-test('should correctly open and respond to close modal button click', () => {
-	const appContainer: HTMLDivElement = document.createElement('div');
-	appContainer.setAttribute('id', 'app-container');
-	document.body.appendChild(appContainer);
-
-	const dialog = new Dialog();
-	const dialogElement: HTMLDialogElement = dialog.render();
-	appContainer.appendChild(dialogElement);
-
-	dialog.getDialog().showModal();
-	assert.strictEqual(dialogElement.classList.contains('show'), true);
-
-	const closeButton: HTMLButtonElement = dialogElement.querySelector('.dialog__close-button')!;
-	closeButton.click();
-
-	assert.strictEqual(dialogElement.classList.contains('show'), false);
+		const dialogBody: HTMLDivElement = dialogRender.querySelector('.dialog__body')!;
+		assert.strictEqual(dialogBody.innerHTML.includes(`<div>Dialog test content</div>`), true);
+	});
 });

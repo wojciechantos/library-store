@@ -1,10 +1,12 @@
 import { assert } from 'vitest';
 import { Button } from './index.ts';
 import { ButtonProps } from 'types.ts';
+import { mountDOMWithElement } from 'helpers/mountDOMWithElement.ts';
 
-test('should render button with default set of props', () => {
+test('should render Button component with default set of props', () => {
 	let isButtonClicked = false;
 	const button: HTMLButtonElement = new Button({}).render();
+	mountDOMWithElement(button);
 
 	assert.strictEqual(button.textContent, '');
 	assert.ok(button.classList.contains('button'));
@@ -17,7 +19,7 @@ test('should render button with default set of props', () => {
 	assert.strictEqual(button.getElementsByClassName('icon').length, 0);
 });
 
-test('should render button with given set of props', () => {
+test('should render Button component with given set of props', () => {
 	const customButtonProps: ButtonProps = {
 		size: 'xs',
 		text: 'Click',
@@ -29,6 +31,7 @@ test('should render button with given set of props', () => {
 	};
 
 	const button: HTMLButtonElement = new Button({ ...customButtonProps }).render();
+	mountDOMWithElement(button);
 	let isButtonClicked = false;
 
 	assert.ok(button.classList.contains('button--xs'));
