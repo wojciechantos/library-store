@@ -51,7 +51,7 @@ export interface FormItemProps {
 }
 
 export interface DialogInterface {
-	dialogContent: HTMLElement | string;
-	getDialog(): HTMLDialogElement;
 	render(): HTMLDialogElement;
+	getDialog(): HTMLDialogElement;
+	dialogContent: HTMLElement | string;
 }

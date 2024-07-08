@@ -49,7 +49,7 @@ export class App {
     			</footer>
 		`;
 
-		const addNewBookDialog: DialogInterface = new Dialog();
+		const addNewBookDialog: DialogInterface = new Dialog('Add new book');
 		const addBookForm = new AddBookForm(this.libraryStore, addNewBookDialog);
 		addNewBookDialog.dialogContent = addBookForm.render();
 		const addNewBookDialogElement: HTMLDialogElement = addNewBookDialog.render();

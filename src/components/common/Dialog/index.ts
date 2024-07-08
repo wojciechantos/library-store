@@ -3,26 +3,31 @@ import { DialogInterface } from 'types.ts';
 import { Button } from 'components/common/Button';
 
 export class Dialog implements DialogInterface {
+	private title?: string;
 	private content?: HTMLElement | string;
 
-	public set dialogContent(dialogContent: HTMLElement | string) {
-		this.content = dialogContent;
+	constructor(title?: string) {
+		this.title = title || '';
+	}
+
+	public set dialogContent(content: HTMLElement | string) {
+		this.content = content || '';
 	}
 
 	public getDialog(): HTMLDialogElement {
 		const appContainer: HTMLElement = document.getElementById('app-container')!;
-		const dialogElement: HTMLDialogElement = appContainer.querySelector<HTMLDialogElement>('.dialog')!;
+		const dialogElement: HTMLDialogElement = appContainer.querySelector('.dialog')!;
 		const oldShow = dialogElement.showModal;
 		const oldClose = dialogElement.close;
 
 		dialogElement.showModal = (): void => {
-			oldShow.call(dialogElement);
+			oldShow?.call(dialogElement);
 			dialogElement.classList.add('show');
 		};
 
 		dialogElement.close = (): void => {
 			dialogElement.classList.remove('show');
-			setTimeout(() => oldClose.call(dialogElement), 20);
+			setTimeout(() => oldClose?.call(dialogElement), 20);
 		};
 
 		return dialogElement;
@@ -33,6 +38,7 @@ export class Dialog implements DialogInterface {
 			size: 'xs',
 			iconName: 'cross',
 			variant: 'transparent',
+			className: 'dialog__close-button',
 			onClick: () => this.getDialog().close(),
 		}).render();
 
@@ -41,12 +47,19 @@ export class Dialog implements DialogInterface {
 
 		dialogElement.innerHTML = `
 			<div class="dialog__content">
-				<div class="dialog__header">
-					<h2>Add new book</h2>
-				</div>
+				<div class="dialog__header"></div>
 				<div class="dialog__body"></div>
 			</div>
 		`;
+
+		if (this.title) {
+			const titleElement: HTMLHeadingElement = document.createElement('h2') as HTMLHeadingElement;
+			titleElement.textContent = this.title;
+
+			if (titleElement) {
+				dialogElement.querySelector('.dialog__header')!.appendChild(titleElement);
+			}
+		}
 
 		dialogElement.querySelector('.dialog__header')!.appendChild(closeDialogButton);
 		const dialogBody: Element = dialogElement.querySelector('.dialog__body')!;
