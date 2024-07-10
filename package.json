@@ -5,12 +5,13 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "npx eslint . && tsc && vitest --watch=false && vite build",
+		"build": "npx eslint . && tsc && vitest --watch=false && cypress run --browser chrome && vite build",
 		"cy:open": "cypress open",
 		"lint": "npx eslint .",
 		"lint:fix": "npx eslint . --fix",
 		"reformat": "npx prettier . --write",
 		"test": "vitest",
+    "e2e:chrome": "cypress run --browser chrome",
 		"test:coverage": "vitest run --coverage",
 		"preview": "vite preview"
 	},

@@ -15,16 +15,16 @@ export class App {
 	init(): void {
 		document.querySelector<HTMLDivElement>('#app-container')!.innerHTML = `
 			<main>
-				<header class="header-wrapper">
-       				<h1>My library</h1>
+				<header class="header-wrapper" data-test="app-header__wrapper">
+       				<h1 data-test="app-header__title-heading">My library</h1>
     			</header>
-    			<div class="books-list__wrapper">
-					<ul id="books-list" class="books-list"></ul>
-    				<p class="books-list__empty-list-placeholder">Here your added books will be shown...</p>
+    			<div class="books-list__wrapper" data-test="books-list__wrapper">
+					<ul id="books-list" class="books-list" data-test="books-list"></ul>
+    				<p class="books-list__empty-list-placeholder" data-test="books-list__empty-list-placeholder">Here your added books will be shown...</p>
     			</div>
   			</main>
   			<footer>
-        		<p>Like my work?</p>
+        		<p data-test="footer-title">Like my work?</p>
         		<a href="https://www.linkedin.com/in/wojciech-antos-b33621242/">
             		<div class="link-wrapper">
                 		Visit my
@@ -57,6 +57,7 @@ export class App {
 		const addNewBookButton: HTMLButtonElement = new Button({
 			iconName: 'plus',
 			text: 'Add new book',
+			dataTest: 'add-new-book__button',
 			onClick: () => addNewBookDialog.getDialog().showModal(),
 		}).render();
 

@@ -7,6 +7,7 @@ export class Button {
 	private size?: ButtonSize;
 	private type?: ButtonType;
 	private className?: string;
+	private dataTest?: string;
 	private iconName?: IconName;
 	private onClick?: () => void;
 	private variant?: ButtonVariant;
@@ -15,6 +16,7 @@ export class Button {
 		this.text = props.text || '';
 		this.size = props.size || 'md';
 		this.type = props.type || 'button';
+		this.dataTest = props.dataTest || '';
 		this.className = props.className || '';
 		this.onClick = props.onClick || undefined;
 		this.variant = props.variant || 'primary';
@@ -55,6 +57,10 @@ export class Button {
 
 		if (this.onClick) {
 			buttonElement.addEventListener('click', this.onClick);
+		}
+
+		if (this.dataTest) {
+			buttonElement.setAttribute('data-test', this.dataTest);
 		}
 
 		return buttonElement;

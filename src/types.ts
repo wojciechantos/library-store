@@ -36,6 +36,7 @@ export interface ButtonProps {
 	text?: string;
 	size?: ButtonSize;
 	type?: ButtonType;
+	dataTest?: string;
 	className?: string;
 	iconName?: IconName;
 	onClick?: () => void;
