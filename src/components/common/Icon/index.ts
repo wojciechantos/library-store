@@ -13,11 +13,11 @@ export class Icon {
 		return iconsMap[iconName];
 	}
 
-	public render(): HTMLElement | null {
+	public render(): HTMLDivElement {
 		const icon: string | null = this.resolveIcon(this.iconName);
 
 		if (!icon) {
-			return null;
+			throw new Error(`Icon named '${this.iconName}' is not defined!`);
 		}
 
 		const iconComponent: HTMLDivElement = document.createElement('div') as HTMLDivElement;

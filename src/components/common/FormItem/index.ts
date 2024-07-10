@@ -10,22 +10,10 @@ export class FormItem {
 
 	constructor(props: FormItemProps) {
 		this.name = props.name;
-		this.type = props.type || 'text';
-		this.maxLength = props.maxLength;
 		this.label = props.label;
+		this.type = props.type || 'text';
 		this.isRequired = props.isRequired || false;
-	}
-
-	public render(): HTMLDivElement | HTMLInputElement {
-		const itemWrapper: HTMLDivElement = document.createElement('div') as HTMLDivElement;
-
-		if (this.type === 'checkbox') {
-			itemWrapper.classList.add('form-item--inline');
-			return this.generateCheckBoxItem(itemWrapper);
-		}
-
-		itemWrapper.classList.add('form-item');
-		return this.generateItem(itemWrapper);
+		this.maxLength = props.maxLength || undefined;
 	}
 
 	private generateCheckBoxItem(itemWrapper: HTMLDivElement): HTMLDivElement {
@@ -76,5 +64,17 @@ export class FormItem {
 		}
 
 		return itemWrapper;
+	}
+
+	public render(): HTMLDivElement | HTMLInputElement {
+		const itemWrapper: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+
+		if (this.type === 'checkbox') {
+			itemWrapper.classList.add('form-item--inline');
+			return this.generateCheckBoxItem(itemWrapper);
+		}
+
+		itemWrapper.classList.add('form-item');
+		return this.generateItem(itemWrapper);
 	}
 }

@@ -5,26 +5,31 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "npx eslint . && tsc && vite build",
+		"build": "npx eslint . && tsc && vitest --watch=false && vite build",
 		"cy:open": "cypress open",
 		"lint": "npx eslint .",
 		"lint:fix": "npx eslint . --fix",
 		"reformat": "npx prettier . --write",
+		"test": "vitest",
+		"test:coverage": "vitest run --coverage",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.6.0",
 		"@types/eslint__js": "^8.42.3",
 		"@types/uuid": "^10.0.0",
+		"@vitest/coverage-v8": "^1.6.0",
 		"cypress": "^13.13.0",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
+		"jsdom": "^24.1.0",
 		"eslint-plugin-cypress": "^3.3.0",
 		"prettier": "3.3.2",
 		"typescript": "^5.5.3",
 		"typescript-eslint": "^7.15.0",
 		"vite": "^5.2.0",
-		"vite-tsconfig-paths": "^4.3.2"
+		"vite-tsconfig-paths": "^4.3.2",
+		"vitest": "^1.6.0"
 	},
 	"dependencies": {
 		"uuid": "^10.0.0"
