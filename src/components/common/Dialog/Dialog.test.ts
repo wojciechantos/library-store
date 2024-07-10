@@ -1,6 +1,6 @@
 import { assert } from 'vitest';
 import { Dialog } from './index.ts';
-import { mountDOMWithElement } from 'helpers/mountDOMWithElement.ts';
+import { mountDOMWithElement } from 'helpers/DOMHelpers.ts';
 
 describe('Dialog component with default configuration', () => {
 	const dialog = new Dialog();
@@ -66,6 +66,6 @@ describe('Dialog component with custom title and content', () => {
 		const dialogRender: HTMLDialogElement = dialog.render();
 
 		const dialogBody: HTMLDivElement = dialogRender.querySelector('.dialog__body')!;
-		assert.strictEqual(dialogBody.innerHTML.includes(`<div>Dialog test content</div>`), true);
+		assert.ok(dialogBody.innerHTML.includes(`<div>Dialog test content</div>`));
 	});
 });

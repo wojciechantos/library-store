@@ -1,6 +1,6 @@
 import { assert } from 'vitest';
 import { Icon } from './index.ts';
-import { mountDOMWithElement } from 'helpers/mountDOMWithElement.ts';
+import { mountDOMWithElement } from 'helpers/DOMHelpers.ts';
 
 test('should render Icon component with given icon name', () => {
 	const icon = new Icon('plus').render();

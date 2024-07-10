@@ -1,7 +1,7 @@
 import { assert } from 'vitest';
 import { Button } from './index.ts';
 import { ButtonProps } from 'types.ts';
-import { mountDOMWithElement } from 'helpers/mountDOMWithElement.ts';
+import { mountDOMWithElement } from 'helpers/DOMHelpers.ts';
 
 test('should render Button component with default set of props', () => {
 	let isButtonClicked = false;
