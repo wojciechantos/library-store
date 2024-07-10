@@ -7,7 +7,6 @@
 		"dev": "vite",
 		"build": "npx eslint . && tsc && vitest --watch=false && vite build",
 		"cy:open": "cypress open",
-    "cy:headless": "cypress run --browser chrome",
 		"lint": "npx eslint .",
 		"lint:fix": "npx eslint . --fix",
 		"reformat": "npx prettier . --write",
