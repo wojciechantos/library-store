@@ -41,6 +41,12 @@
 	/* Input */
 	--border-color: var(--polar-mist);
 	--border-color-hover: var(--grey-300);
+
+    /*Anchor*/
+    --anchor-light-color: var(--grey-500);
+    --anchor-light-color-hover: var(--grey-300);
+    --anchor-dark-color: var(--grey-100);
+    --anchor-dark-color-hover: var(--grey-200);
 }
 
 * {
@@ -86,39 +92,8 @@ main {
 	margin-bottom: 120px;
 }
 
-footer {
-	gap: 6px;
-	width: 100%;
-	bottom: 24px;
-	display: flex;
-	position: absolute;
-	align-items: center;
-	flex-direction: column;
-	color: var(--color-primary);
-}
-
-a {
-	text-decoration: none;
-	transition: color 0.2s;
-	color: var(--color-primary);
-
-	&:hover,
-	&:focus,
-	&:active {
-		text-decoration: underline;
-		color: var(--color-primary-hover);
-	}
-}
-
 .header-wrapper {
 	display: flex;
 	margin-bottom: 16px;
 	justify-content: space-between;
-}
-
-.link-wrapper {
-	gap: 6px;
-	align-items: center;
-	display: inline-flex;
-	justify-content: center;
 }

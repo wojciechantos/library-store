@@ -19,6 +19,7 @@ export class FormItem {
 	private generateCheckBoxItem(itemWrapper: HTMLDivElement): HTMLDivElement {
 		const id = `form-item__input-checkbox-${this.name}`;
 
+		// TODO: Add class name for label and move to styles file; Update tests
 		itemWrapper.innerHTML = `
             <label for="${id}">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
             <input id="${id}" class="form-item__input-checkbox">

@@ -1,0 +1,27 @@
+.app-footer {
+    bottom: 0;
+    width: 100%;
+    row-gap: 8px;
+    display: flex;
+    font-size: 14px;
+    column-gap: 32px;
+    position: absolute;
+    padding: 16px 24px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    color: var(--grey-500);
+    background-color: var(--grey-100);
+
+    @media (min-width: 743px) {
+        flex-direction: row;
+    }
+}
+
+.footer-item__content-wrapper {
+    gap: 6px;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+}

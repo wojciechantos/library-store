@@ -2,7 +2,10 @@ import * as selectors from './selectors';
 
 const {
 	booksList,
+	appFooter,
 	footerTitle,
+	linkedInLink,
+	gmailAddress,
 	addNewBookButton,
 	booksListWrapper,
 	appHeaderWrapper,
@@ -45,7 +48,21 @@ describe('Visit the app and check the initial view', () => {
 	});
 
 	it('checks the app footer', () => {
-		cy.get('footer').should('be.visible');
-		cy.getByDataTest(footerTitle).should('be.visible').should('contain.text', 'Like my work?');
+		const currentYear = new Date().getFullYear();
+
+		cy.getByDataTest(appFooter)
+			.should('be.visible')
+			.should('have.class', 'app-footer')
+			.should('have.attr', 'id', 'app-footer');
+
+		cy.getByDataTest(footerTitle)
+			.should('be.visible')
+			.should('contain.text', `Created by @wojciechantos | ${currentYear}`);
+
+		cy.getByDataTest(linkedInLink)
+			.should('be.visible')
+			.should('have.attr', 'href', 'https://www.linkedin.com/in/wojciech-antos-b33621242/');
+
+		cy.getByDataTest(gmailAddress).should('be.visible').should('contain.text', 'aweb.wojciechantos@gmail.com');
 	});
 });

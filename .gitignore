@@ -12,6 +12,7 @@ dist
 dist-ssr
 coverage
 cypress/downloads*
+cypress/screenshots*
 *.local
 
 # Editor directories and files

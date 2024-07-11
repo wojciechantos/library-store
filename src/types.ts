@@ -5,7 +5,9 @@ export type ButtonSize = 'xs' | 'sm' | 'md';
 export type ButtonVariant = 'primary' | 'secondary' | 'transparent';
 export type ButtonType = 'button' | 'submit' | 'reset';
 
-export type IconName = 'plus' | 'cross' | 'trash' | 'bookmark';
+export type AnchorVariant = 'light' | 'dark';
+
+export type IconName = 'plus' | 'cross' | 'trash' | 'bookmark' | 'gmail' | 'linkedIn';
 
 export interface Book {
 	id: string;
@@ -55,4 +57,12 @@ export interface DialogInterface {
 	render(): HTMLDialogElement;
 	getDialog(): HTMLDialogElement;
 	dialogContent: HTMLElement | string;
+}
+
+export interface AnchorProps {
+	href: string;
+	dataTest?: string;
+	className?: string;
+	variant?: AnchorVariant;
+	content?: HTMLElement | string;
 }

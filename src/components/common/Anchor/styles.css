@@ -1,0 +1,40 @@
+.anchor {
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: underline;
+    }
+}
+
+.anchor--light {
+    color: var(--anchor-light-color);
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: var(--anchor-light-color-hover);
+    }
+}
+
+.anchor--dark {
+    color: var(--anchor-dark-color);
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: var(--anchor-dark-color-hover);
+    }
+}
+
+.anchor--inactive {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: none;
+        color: currentColor;
+    }
+}

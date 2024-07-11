@@ -1,6 +1,7 @@
 .books-list__wrapper {
 	display: flex;
-	padding: 24px;
+	padding: 24px 8px 24px 24px;
+    max-height: 600px;
 	border-radius: 8px;
 	flex-direction: column;
 	box-shadow: 2px 2px 12px var(--color-primary);
@@ -13,4 +14,24 @@
 	display: flex;
 	list-style: none;
 	flex-direction: column;
+    padding-right: 8px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        cursor: pointer;
+        border-radius: 4px;
+        background: var(--ruby-300);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--ruby-200);
+    }
 }
