@@ -3,7 +3,7 @@ import { Dialog } from './index.ts';
 import { mountDOMWithElement } from 'helpers/DOMHelpers.ts';
 
 describe('Dialog component with default configuration', () => {
-	const dialog = new Dialog();
+	const dialog = new Dialog({});
 	let dialogRender: HTMLDialogElement;
 
 	beforeAll(() => {
@@ -37,7 +37,7 @@ describe('Dialog component with default configuration', () => {
 });
 
 describe('Dialog component with custom title and content', () => {
-	const dialog = new Dialog('Custom title');
+	const dialog = new Dialog({ title: 'Custom title' });
 
 	beforeAll(() => {
 		mountDOMWithElement(dialog.render());

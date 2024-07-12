@@ -1,24 +1,27 @@
 import './styles.css';
 import { Button } from 'components/common/Button';
-import { type Book, checkedIcon, ListItemInterface, uncheckedIcon } from 'types.ts';
+import { checkedIcon, uncheckedIcon, ListItemProps } from 'types.ts';
 
-export class ListItem implements ListItemInterface {
+export class ListItem {
 	id: string;
 	title: string;
 	pages: number;
 	read: boolean;
 	author: string;
+	dataTest?: string;
 	onRemoveClick: () => void;
 	onToggleClick: (itemId: string) => void;
 
-	constructor(item: Book, onRemoveClick: () => void, onToggleClick: () => void) {
-		this.id = item.id;
-		this.read = item.read;
-		this.title = item.title;
-		this.pages = item.pages;
-		this.author = item.author;
-		this.onRemoveClick = onRemoveClick;
-		this.onToggleClick = onToggleClick;
+	// constructor(item: Book, onRemoveClick: () => void, onToggleClick: () => void, dataTest?: string) {
+	constructor(props: ListItemProps) {
+		this.id = props.item.id;
+		this.read = props.item.read;
+		this.title = props.item.title;
+		this.pages = props.item.pages;
+		this.author = props.item.author;
+		this.dataTest = props.dataTest || '';
+		this.onRemoveClick = props.onRemoveClick;
+		this.onToggleClick = props.onToggleClick;
 	}
 
 	private addClasses(element: HTMLLIElement): void {
@@ -41,6 +44,10 @@ export class ListItem implements ListItemInterface {
 		const listElement: HTMLLIElement = document.createElement('li') as HTMLLIElement;
 		listElement.setAttribute('data-id', this.id);
 		this.addClasses(listElement);
+
+		if (this.dataTest) {
+			listElement.setAttribute('data-test', this.dataTest);
+		}
 
 		listElement.innerHTML = `
 			<div class="list-item__description-wrapper">

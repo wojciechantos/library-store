@@ -11,9 +11,28 @@ const {
 	appHeaderWrapper,
 	emptyListPlaceholder,
 	appHeaderTitleHeading,
+	closeAddBookDialogButton,
+	addBookDialog,
+	titleItem,
+	titleItemLabel,
+	titleItemInput,
+	authorItem,
+	authorItemLabel,
+	authorItemInput,
+	pagesItem,
+	pagesItemLabel,
+	pagesItemInput,
+	readItem,
+	readItemLabel,
+	readItemCheckbox,
+	formSubmitButton,
 } = selectors;
 
 describe('Visit the app and check the initial view', () => {
+	before(() => {
+		cy.clearLocalStorage();
+	});
+
 	it('visits the app and check URL', () => {
 		cy.visit('http://localhost:5173/');
 		cy.url().should('eq', 'http://localhost:5173/');
@@ -64,5 +83,38 @@ describe('Visit the app and check the initial view', () => {
 			.should('have.attr', 'href', 'https://www.linkedin.com/in/wojciech-antos-b33621242/');
 
 		cy.getByDataTest(gmailAddress).should('be.visible').should('contain.text', 'aweb.wojciechantos@gmail.com');
+	});
+
+	it('checks the "Add new book" dialog structure', () => {
+		cy.getByDataTest(addNewBookButton).click();
+		cy.getByDataTest(addBookDialog).should('be.visible');
+
+		/* 'Title' item */
+		cy.getByDataTest(titleItem).within(() => {
+			cy.getByDataTest(titleItemLabel).should('be.visible').should('contain', 'Title');
+			cy.getByDataTest(titleItemInput).should('be.visible').should('have.attr', 'required');
+		});
+
+		/* 'Author' item */
+		cy.getByDataTest(authorItem).within(() => {
+			cy.getByDataTest(authorItemLabel).should('be.visible').should('contain', 'Author');
+			cy.getByDataTest(authorItemInput).should('be.visible').should('have.attr', 'required');
+		});
+
+		/* 'Number of pages' item */
+		cy.getByDataTest(pagesItem).within(() => {
+			cy.getByDataTest(pagesItemLabel).should('be.visible').should('contain', 'Number of pages');
+			cy.getByDataTest(pagesItemInput).should('be.visible').should('have.attr', 'type').and('eq', 'number');
+		});
+
+		/* 'Read' item */
+		cy.getByDataTest(readItem).within(() => {
+			cy.getByDataTest(readItemLabel).should('be.visible').should('contain', 'Read');
+			cy.getByDataTest(readItemCheckbox).should('be.visible').should('have.attr', 'type').and('eq', 'checkbox');
+		});
+
+		cy.getByDataTest(formSubmitButton).should('be.visible');
+		cy.getByDataTest(closeAddBookDialogButton).should('be.visible').click();
+		cy.getByDataTest(addBookDialog).should('not.be.visible');
 	});
 });

@@ -24,12 +24,20 @@ export interface LibraryStoreInterface {
 	loadBooksList(): void;
 }
 
+export interface ListItemProps {
+	item: Book;
+	dataTest?: string;
+	onRemoveClick: () => void;
+	onToggleClick: (itemId: string) => void;
+}
+
 export interface ListItemInterface {
 	id: string;
 	title: string;
-	author: string;
 	pages: number;
 	read: boolean;
+	author: string;
+	dataTest?: string;
 	onRemoveClick: () => void;
 	onToggleClick: (itemId: string) => void;
 }

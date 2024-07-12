@@ -32,11 +32,12 @@ export class LibraryStore implements LibraryStoreInterface {
 
 	public addListElement(book: Book): void {
 		const booksList: HTMLElement = document.getElementById('books-list')!;
-		const listItem = new ListItem(
-			book,
-			() => this.removeListElement(book.id),
-			() => this.updateListElementStatus(book.id)
-		);
+		const listItem = new ListItem({
+			item: book,
+			dataTest: 'books-list-item',
+			onRemoveClick: () => this.removeListElement(book.id),
+			onToggleClick: () => this.updateListElementStatus(book.id),
+		});
 		const listItemElement: HTMLElement = listItem.render();
 		booksList.appendChild(listItemElement);
 		this.library.push(book);

@@ -21,9 +21,8 @@ export class FormItem {
 	private generateCheckBoxItem(itemWrapper: HTMLDivElement): HTMLDivElement {
 		const id = `form-item__input-checkbox-${this.name}`;
 
-		// TODO: Add class name for label and move to styles file; Update tests
 		itemWrapper.innerHTML = `
-            <label for="${id}">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
+            <label for="${id}" class="form-item__label" data-test="${this.dataTest}__label">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
             <input id="${id}" class="form-item__input-checkbox">
         `;
 
@@ -45,7 +44,7 @@ export class FormItem {
 	private generateItem(itemWrapper: HTMLDivElement): HTMLDivElement {
 		const id = `form-item__input--${this.name}`;
 		itemWrapper.innerHTML = `
-            <label for="${id}">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
+            <label for="${id}" class="form-item__label" data-test="${this.dataTest}__label">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
             <input id="${id}" class="form-item__input">
         `;
 
@@ -56,7 +55,7 @@ export class FormItem {
 			inputElement.name = this.name;
 			inputElement.required = this.isRequired !== undefined ? this.isRequired : false;
 
-			if (this.maxLength && this.type === 'number') {
+			if (this.maxLength) {
 				inputElement.setAttribute('maxlength', this.maxLength.toString());
 			}
 

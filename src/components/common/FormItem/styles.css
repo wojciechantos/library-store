@@ -13,6 +13,10 @@
 	color: red;
 }
 
+.form-item__label {
+    font-size: 14px;
+}
+
 .form-item__input {
 	width: 100%;
 	padding: 8px;
