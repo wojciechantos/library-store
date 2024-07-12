@@ -5,6 +5,7 @@ export class FormItem {
 	private name: string;
 	private label: string;
 	private type?: string;
+	private dataTest?: string;
 	private maxLength?: number;
 	private isRequired?: boolean;
 
@@ -12,6 +13,7 @@ export class FormItem {
 		this.name = props.name;
 		this.label = props.label;
 		this.type = props.type || 'text';
+		this.dataTest = props.dataTest || '';
 		this.isRequired = props.isRequired || false;
 		this.maxLength = props.maxLength || undefined;
 	}
@@ -31,6 +33,10 @@ export class FormItem {
 			inputElement.name = this.name;
 			inputElement.type = 'checkbox';
 			inputElement.required = this.isRequired !== undefined ? this.isRequired : false;
+
+			if (this.dataTest) {
+				inputElement.setAttribute('data-test', `${this.dataTest}__checkbox`);
+			}
 		}
 
 		return itemWrapper;
@@ -50,7 +56,7 @@ export class FormItem {
 			inputElement.name = this.name;
 			inputElement.required = this.isRequired !== undefined ? this.isRequired : false;
 
-			if (this.maxLength) {
+			if (this.maxLength && this.type === 'number') {
 				inputElement.setAttribute('maxlength', this.maxLength.toString());
 			}
 
@@ -62,6 +68,10 @@ export class FormItem {
 					inputElement.setAttribute('max', this.maxLength.toString());
 				}
 			}
+
+			if (this.dataTest) {
+				inputElement.setAttribute('data-test', `${this.dataTest}__input`);
+			}
 		}
 
 		return itemWrapper;
@@ -69,6 +79,10 @@ export class FormItem {
 
 	public render(): HTMLDivElement | HTMLInputElement {
 		const itemWrapper: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+
+		if (this.dataTest) {
+			itemWrapper.setAttribute('data-test', this.dataTest);
+		}
 
 		if (this.type === 'checkbox') {
 			itemWrapper.classList.add('form-item--inline');

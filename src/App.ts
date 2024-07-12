@@ -26,15 +26,19 @@ export class App {
   			</main>
 		`;
 
-		const addNewBookDialog: DialogInterface = new Dialog('Add new book');
-		const addBookForm = new AddBookForm(this.libraryStore, addNewBookDialog);
+		const addNewBookDialog: DialogInterface = new Dialog({ title: 'Add new book', dataTest: 'add-book' });
+		const addBookForm = new AddBookForm({
+			dataTest: 'add-book',
+			storeInstance: this.libraryStore,
+			dialogInstance: addNewBookDialog,
+		});
 		addNewBookDialog.dialogContent = addBookForm.render();
 		const addNewBookDialogElement: HTMLDialogElement = addNewBookDialog.render();
 
 		const addNewBookButton: HTMLButtonElement = new Button({
 			iconName: 'plus',
 			text: 'Add new book',
-			dataTest: 'add-new-book__button',
+			dataTest: 'add-book__button',
 			onClick: () => addNewBookDialog.getDialog().showModal(),
 		}).render();
 

@@ -48,7 +48,7 @@ describe('Visit the app and check the initial view', () => {
 	});
 
 	it('checks the app footer', () => {
-		const currentYear = new Date().getFullYear();
+		const currentYear: number = new Date().getFullYear();
 
 		cy.getByDataTest(appFooter)
 			.should('be.visible')

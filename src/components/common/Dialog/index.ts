@@ -1,13 +1,15 @@
 import './styles.css';
-import { DialogInterface } from 'types.ts';
+import { DialogProps, DialogInterface } from 'types.ts';
 import { Button } from 'components/common/Button';
 
 export class Dialog implements DialogInterface {
 	private title?: string;
+	private dataTest?: string;
 	private content?: HTMLElement | string;
 
-	constructor(title?: string) {
-		this.title = title || '';
+	constructor(props: DialogProps) {
+		this.title = props.title || '';
+		this.dataTest = props.dataTest || '';
 	}
 
 	public set dialogContent(content: HTMLElement | string) {
@@ -39,11 +41,16 @@ export class Dialog implements DialogInterface {
 			iconName: 'cross',
 			variant: 'transparent',
 			className: 'dialog__close-button',
+			dataTest: this.dataTest ? `${this.dataTest}__close-dialog` : undefined,
 			onClick: () => this.getDialog().close(),
 		}).render();
 
 		const dialogElement: HTMLDialogElement = document.createElement('dialog') as HTMLDialogElement;
 		dialogElement.classList.add('dialog');
+
+		if (this.dataTest) {
+			dialogElement.setAttribute('data-test', `${this.dataTest}__dialog`);
+		}
 
 		dialogElement.innerHTML = `
 			<div class="dialog__content">
@@ -67,6 +74,10 @@ export class Dialog implements DialogInterface {
 		if (this.content) {
 			if (typeof this.content === 'string') {
 				dialogBody.textContent = this.content;
+
+				if (this.dataTest) {
+					dialogBody.setAttribute('data-test', `${this.dataTest}__dialog-body`);
+				}
 			} else {
 				dialogBody.appendChild(this.content);
 			}

@@ -45,12 +45,24 @@ export interface ButtonProps {
 	variant?: ButtonVariant;
 }
 
+export interface AddBookFormProps {
+	dataTest?: string;
+	dialogInstance: DialogInterface;
+	storeInstance: LibraryStoreInterface;
+}
+
 export interface FormItemProps {
 	name: string;
 	type?: string;
 	label: string;
+	dataTest?: string;
 	maxLength?: number;
 	isRequired?: boolean;
+}
+
+export interface DialogProps {
+	title?: string;
+	dataTest?: string;
 }
 
 export interface DialogInterface {
