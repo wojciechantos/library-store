@@ -35,19 +35,15 @@ export class Button {
 		const buttonElement: HTMLButtonElement = document.createElement('button') as HTMLButtonElement;
 		this.addClasses(buttonElement);
 
-		if (this.iconName) {
-			const iconElement: HTMLElement | null = new Icon(this.iconName).render();
-			if (iconElement) {
-				buttonElement.appendChild(iconElement);
-			}
+		if (this.text) {
+			buttonElement.textContent = this.text;
 		}
 
-		if (this.text) {
-			const textElement: HTMLElement | null = document.createElement('p') as HTMLElement;
-			textElement.textContent = this.text;
+		if (this.iconName) {
+			const iconElement: HTMLElement | null = new Icon(this.iconName).render();
 
-			if (textElement) {
-				buttonElement.appendChild(textElement);
+			if (iconElement) {
+				buttonElement.appendChild(iconElement);
 			}
 		}
 

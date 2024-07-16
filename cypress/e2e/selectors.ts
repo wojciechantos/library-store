@@ -1,6 +1,7 @@
 /*MAIN ELEMENTS*/
 export const appFooter = 'app-footer';
-export const footerTitle = 'footer-title';
+export const footerTitle = 'footer-captions';
+export const githubLink = 'footer-link__github';
 export const addNewBookButton = 'add-book__button';
 export const linkedInLink = 'footer-link__linked-in';
 export const booksListWrapper = 'books-list__wrapper';

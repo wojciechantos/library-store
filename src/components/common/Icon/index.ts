@@ -23,7 +23,7 @@ export class Icon {
 		const iconComponent: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 		iconComponent.insertAdjacentHTML('afterbegin', icon);
 
-		const svgElement: SVGElement | null = iconComponent.querySelector('svg');
+		const svgElement: SVGElement | null = iconComponent.querySelector<SVGElement>('svg');
 		iconComponent.classList.add('icon');
 
 		if (svgElement) {

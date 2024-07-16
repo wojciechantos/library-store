@@ -1,5 +1,6 @@
 import './styles.css';
 import { FormItemProps } from 'types.ts';
+import { Text } from 'components/common/Typography';
 
 export class FormItem {
 	private name: string;
@@ -22,11 +23,14 @@ export class FormItem {
 		const id = `form-item__input-checkbox-${this.name}`;
 
 		itemWrapper.innerHTML = `
-            <label for="${id}" class="form-item__label" data-test="${this.dataTest}__label">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
+            <label for="${id}" class="form-item__label" data-test="${this.dataTest}__label">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''}</label>
             <input id="${id}" class="form-item__input-checkbox">
         `;
 
-		const inputElement: HTMLInputElement = itemWrapper.querySelector(`#${id}`) as HTMLInputElement;
+		const labelText: HTMLParagraphElement = new Text({ text: this.label, variant: 'body_sm' }).render();
+		itemWrapper.querySelector<HTMLLabelElement>('.form-item__label')!.appendChild(labelText);
+
+		const inputElement: HTMLInputElement = itemWrapper.querySelector<HTMLInputElement>(`#${id}`)!;
 
 		if (inputElement) {
 			inputElement.name = this.name;
@@ -44,11 +48,14 @@ export class FormItem {
 	private generateItem(itemWrapper: HTMLDivElement): HTMLDivElement {
 		const id = `form-item__input--${this.name}`;
 		itemWrapper.innerHTML = `
-            <label for="${id}" class="form-item__label" data-test="${this.dataTest}__label">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''} ${this.label}</label>
+            <label for="${id}" class="form-item__label" data-test="${this.dataTest}__label">${this.isRequired ? '<span class="form-item__required-mark">*</span>' : ''}</label>
             <input id="${id}" class="form-item__input">
         `;
 
-		const inputElement: HTMLInputElement = itemWrapper.querySelector(`#${id}`) as HTMLInputElement;
+		const labelText: HTMLParagraphElement = new Text({ text: this.label, variant: 'body_sm' }).render();
+		itemWrapper.querySelector<HTMLLabelElement>('.form-item__label')!.appendChild(labelText);
+
+		const inputElement: HTMLInputElement = itemWrapper.querySelector<HTMLInputElement>(`#${id}`)!;
 
 		if (inputElement) {
 			inputElement.type = this.type || 'text';

@@ -32,25 +32,24 @@ export class LibraryStore implements LibraryStoreInterface {
 
 	public addListElement(book: Book): void {
 		const booksList: HTMLElement = document.getElementById('books-list')!;
-		const listItem = new ListItem({
+		const listItem: HTMLElement = new ListItem({
 			item: book,
 			dataTest: 'books-list-item',
 			onRemoveClick: () => this.removeListElement(book.id),
 			onToggleClick: () => this.updateListElementStatus(book.id),
-		});
-		const listItemElement: HTMLElement = listItem.render();
-		booksList.appendChild(listItemElement);
+		}).render();
+		booksList.appendChild(listItem);
 		this.library.push(book);
 		localStorage.setItem(book.id, JSON.stringify(book));
 	}
 
 	public removeListElement(bookId: string): void {
 		const booksList: HTMLElement = document.getElementById('books-list')!;
-		const listItemElement: Element | null = booksList.querySelector(`[data-id="${bookId}"]`);
+		const listItemToDelete: HTMLElement | null = booksList.querySelector<HTMLElement>(`[data-id="${bookId}"]`);
 
-		if (listItemElement) {
+		if (listItemToDelete) {
 			localStorage.removeItem(bookId);
-			booksList.removeChild(listItemElement);
+			booksList.removeChild(listItemToDelete);
 			this.library = this.library.filter((book) => book.id !== bookId);
 			this.updatePlaceholderVisibility();
 		}
@@ -71,7 +70,7 @@ export class LibraryStore implements LibraryStoreInterface {
 	}
 
 	public updatePlaceholderVisibility(): void {
-		const emptyListPlaceholder: HTMLLIElement = document.querySelector<HTMLLIElement>(
+		const emptyListPlaceholder: HTMLParagraphElement = document.querySelector<HTMLParagraphElement>(
 			'.books-list__empty-list-placeholder'
 		)!;
 

@@ -14,7 +14,8 @@
 }
 
 .form-item__label {
-    font-size: 14px;
+    gap: 4px;
+    display: flex;
 }
 
 .form-item__input {

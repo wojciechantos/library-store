@@ -1,6 +1,5 @@
 :root {
 	font-family: 'Poppins', sans-serif;
-	font-weight: 400;
 	font-style: normal;
 
 	font-synthesis: none;
@@ -8,6 +7,17 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
+    /* -----TYPOGRAPHY----- */
+
+    /* Font sizes - mobile */
+    --font-size-xs: 13px;
+    --font-size-sm: 14px;
+    --font-size-md: 15px;
+    --font-size-lg: 18px;
+
+    /* -----COLORS----- */
+
+    /* Color palette */
 	--grey-100: #313638;
 	--grey-200: #5b5b5b;
 	--grey-300: #737373;
@@ -49,27 +59,25 @@
     --anchor-dark-color-hover: var(--grey-200);
 }
 
+@media (min-width: 609px) {
+    :root {
+        /* -----TYPOGRAPHY----- */
+
+        /* Font sizes - desktop */
+        --font-size-md: 16px;
+        --font-size-lg: 20px;
+    }
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-button {
-	font-family: 'Poppins', sans-serif;
-}
-
-h1 {
-	font-weight: 600;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 500;
-}
+/*button {*/
+	/*font-family: 'Poppins', sans-serif;*/
+/*}*/
 
 #app-container {
 	gap: 16px;

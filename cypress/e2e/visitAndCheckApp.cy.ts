@@ -1,9 +1,13 @@
+import { path } from './commonData';
 import * as selectors from './selectors';
+
+const { appURL, linkedInURL, githubURL } = path;
 
 const {
 	booksList,
 	appFooter,
 	footerTitle,
+	githubLink,
 	linkedInLink,
 	gmailAddress,
 	addNewBookButton,
@@ -34,8 +38,8 @@ describe('Visit the app and check the initial view', () => {
 	});
 
 	it('visits the app and check URL', () => {
-		cy.visit('http://localhost:5173/');
-		cy.url().should('eq', 'http://localhost:5173/');
+		cy.visit(appURL);
+		cy.url().should('eq', appURL);
 		cy.get('#app-container').should('be.visible');
 	});
 
@@ -68,19 +72,18 @@ describe('Visit the app and check the initial view', () => {
 
 	it('checks the app footer', () => {
 		const currentYear: number = new Date().getFullYear();
+		cy.fixture('common.json').as('usersData');
 
 		cy.getByDataTest(appFooter)
 			.should('be.visible')
 			.should('have.class', 'app-footer')
 			.should('have.attr', 'id', 'app-footer');
 
-		cy.getByDataTest(footerTitle)
-			.should('be.visible')
-			.should('contain.text', `Created by @wojciechantos | ${currentYear}`);
+		cy.getByDataTest(footerTitle).should('be.visible').should('contain.text', `${currentYear} | Created by`);
 
-		cy.getByDataTest(linkedInLink)
-			.should('be.visible')
-			.should('have.attr', 'href', 'https://www.linkedin.com/in/wojciech-antos-b33621242/');
+		cy.getByDataTest(githubLink).should('be.visible').should('have.attr', 'href', githubURL);
+
+		cy.getByDataTest(linkedInLink).should('be.visible').should('have.attr', 'href', linkedInURL);
 
 		cy.getByDataTest(gmailAddress).should('be.visible').should('contain.text', 'aweb.wojciechantos@gmail.com');
 	});

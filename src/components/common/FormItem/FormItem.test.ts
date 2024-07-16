@@ -11,8 +11,8 @@ describe('FormItem component with default configuration', () => {
 
 		mountDOMWithElement(formItemRender);
 
-		const label: HTMLLabelElement = formItemRender.querySelector('label')!;
-		const input: HTMLInputElement = formItemRender.querySelector('input')!;
+		const label: HTMLLabelElement = formItemRender.querySelector<HTMLLabelElement>('label')!;
+		const input: HTMLInputElement = formItemRender.querySelector<HTMLInputElement>('input')!;
 
 		assert.strictEqual(formItemRender.classList.contains('form-item'), true);
 		assert.ok(formItemRender.contains(label));
@@ -40,9 +40,10 @@ describe('FormItem component with default configuration', () => {
 
 		mountDOMWithElement(formItemRender);
 
-		const label: HTMLLabelElement = formItemRender.querySelector('label')!;
-		const input: HTMLInputElement = formItemRender.querySelector('input')!;
-		const requiredMark: HTMLSpanElement = formItemRender.querySelector('.form-item__required-mark')!;
+		const label: HTMLLabelElement = formItemRender.querySelector<HTMLLabelElement>('label')!;
+		const input: HTMLInputElement = formItemRender.querySelector<HTMLInputElement>('input')!;
+		const requiredMark: HTMLSpanElement =
+			formItemRender.querySelector<HTMLSpanElement>('.form-item__required-mark')!;
 
 		assert.strictEqual(formItemRender.classList.contains('form-item'), true);
 		assert.ok(formItemRender.contains(label));
@@ -50,7 +51,7 @@ describe('FormItem component with default configuration', () => {
 		assert.ok(label.contains(requiredMark));
 
 		assert.strictEqual(input.classList.contains('form-item__input'), true);
-		assert.strictEqual(label.textContent?.trim(), '* Number item');
+		assert.strictEqual(label.textContent?.trim(), '*Number item');
 		assert.strictEqual(input.getAttribute('id'), 'form-item__input--number-item');
 		assert.strictEqual(input.getAttribute('type'), 'number');
 		assert.strictEqual(input.getAttribute('name'), 'number-item');
@@ -70,7 +71,7 @@ describe('FormItem component with default configuration', () => {
 
 		mountDOMWithElement(formItemRender);
 
-		const input: HTMLInputElement = formItemRender.querySelector('input')!;
+		const input: HTMLInputElement = formItemRender.querySelector<HTMLInputElement>('input')!;
 
 		assert.strictEqual(formItemRender.classList.contains('form-item--inline'), true);
 		assert.strictEqual(input.getAttribute('id'), 'form-item__input-checkbox-checkbox-item');

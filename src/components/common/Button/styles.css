@@ -1,19 +1,22 @@
 .button {
 	gap: 6px;
 	border: none;
-	display: flex;
 	cursor: pointer;
 	font-weight: 500;
 	border-radius: 5px;
 	width: fit-content;
 	align-items: center;
+	display: inline-flex;
 	justify-content: center;
+    flex-direction: row-reverse;
+    font-family: Poppins, sans-serif;
 }
 
 .button--xs {
 	padding: 6px;
+    font-size: var(--font-size-xs);
 
-	.icon {
+    .icon {
 		width: 12px;
 		height: 12px;
 	}
@@ -21,8 +24,9 @@
 
 .button--sm {
 	padding: 6px 12px;
+    font-size: var(--font-size-sm);
 
-	.icon {
+    .icon {
 		width: 18px;
 		height: 18px;
 	}
@@ -30,6 +34,7 @@
 
 .button--md {
 	padding: 8px 16px;
+    font-size: var(--font-size-md);
 
 	.icon {
 		width: 24px;
@@ -69,9 +74,15 @@
 
 .button--transparent {
 	background: none;
+    color: var(--color-primary);
+
+    .icon {
+        fill: var(--color-primary);
+    }
 
 	&:hover,
 	&:active {
+        color: var(--color-primary);
 		background-color: var(--button-bg-transparent-hover);
 	}
 }

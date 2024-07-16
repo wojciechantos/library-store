@@ -7,7 +7,7 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type AnchorVariant = 'light' | 'dark';
 
-export type IconName = 'plus' | 'cross' | 'trash' | 'bookmark' | 'gmail' | 'linkedIn';
+export type IconName = 'plus' | 'cross' | 'trash' | 'bookmark' | 'gmail' | 'linkedIn' | 'github';
 
 export interface Book {
 	id: string;
@@ -26,17 +26,6 @@ export interface LibraryStoreInterface {
 
 export interface ListItemProps {
 	item: Book;
-	dataTest?: string;
-	onRemoveClick: () => void;
-	onToggleClick: (itemId: string) => void;
-}
-
-export interface ListItemInterface {
-	id: string;
-	title: string;
-	pages: number;
-	read: boolean;
-	author: string;
 	dataTest?: string;
 	onRemoveClick: () => void;
 	onToggleClick: (itemId: string) => void;
@@ -85,4 +74,22 @@ export interface AnchorProps {
 	className?: string;
 	variant?: AnchorVariant;
 	content?: HTMLElement | string;
+}
+
+export interface HeadingProps {
+	text: string;
+	dataTest?: string;
+	className?: string;
+	level: 1 | 2 | 3 | 4 | 5 | 6;
+	fontWeight?: 'normal' | 'bold';
+	textAlign?: 'left' | 'center' | 'right';
+}
+export interface TextProps {
+	text: string;
+	dataTest?: string;
+	className?: string;
+	color?: 'dark' | 'light';
+	textAlign?: 'left' | 'center' | 'right';
+	fontWeight?: 'light' | 'normal' | 'bold';
+	variant?: 'captions' | 'body_sm' | 'body' | 'body_lg';
 }

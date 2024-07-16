@@ -1,6 +1,7 @@
 import './styles.css';
-import { DialogProps, DialogInterface } from 'types.ts';
 import { Button } from 'components/common/Button';
+import { DialogProps, DialogInterface } from 'types';
+import { Heading, Text } from 'components/common/Typography';
 
 export class Dialog implements DialogInterface {
 	private title?: string;
@@ -18,7 +19,7 @@ export class Dialog implements DialogInterface {
 
 	public getDialog(): HTMLDialogElement {
 		const appContainer: HTMLElement = document.getElementById('app-container')!;
-		const dialogElement: HTMLDialogElement = appContainer.querySelector('.dialog')!;
+		const dialogElement: HTMLDialogElement = appContainer.querySelector<HTMLDialogElement>('.dialog')!;
 		const oldShow = dialogElement.showModal;
 		const oldClose = dialogElement.close;
 
@@ -60,20 +61,22 @@ export class Dialog implements DialogInterface {
 		`;
 
 		if (this.title) {
-			const titleElement: HTMLHeadingElement = document.createElement('h2') as HTMLHeadingElement;
-			titleElement.textContent = this.title;
+			const dialogTitle: HTMLHeadingElement = new Heading({
+				level: 2,
+				text: this.title,
+				dataTest: 'dialog-title',
+			}).render();
 
-			if (titleElement) {
-				dialogElement.querySelector('.dialog__header')!.appendChild(titleElement);
-			}
+			dialogElement.querySelector<HTMLDivElement>('.dialog__header')!.appendChild(dialogTitle);
 		}
 
-		dialogElement.querySelector('.dialog__header')!.appendChild(closeDialogButton);
-		const dialogBody: Element = dialogElement.querySelector('.dialog__body')!;
+		dialogElement.querySelector<HTMLDivElement>('.dialog__header')!.appendChild(closeDialogButton);
+		const dialogBody: HTMLDivElement = dialogElement.querySelector<HTMLDivElement>('.dialog__body')!;
 
 		if (this.content) {
 			if (typeof this.content === 'string') {
-				dialogBody.textContent = this.content;
+				const stringContent: HTMLParagraphElement = new Text({ text: this.content }).render();
+				dialogBody.appendChild(stringContent);
 
 				if (this.dataTest) {
 					dialogBody.setAttribute('data-test', `${this.dataTest}__dialog-body`);

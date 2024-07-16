@@ -1,15 +1,18 @@
 .anchor {
     text-decoration: none;
-    transition: color 0.2s;
 
     &:hover,
     &:focus,
     &:active {
         text-decoration: underline;
     }
+
+    & .text {
+        transition: color 0.15s;
+    }
 }
 
-.anchor--light {
+.anchor--light .text {
     color: var(--anchor-light-color);
 
     &:hover,
@@ -19,7 +22,7 @@
     }
 }
 
-.anchor--dark {
+.anchor--dark .text {
     color: var(--anchor-dark-color);
 
     &:hover,

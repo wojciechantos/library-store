@@ -17,11 +17,11 @@ describe('Dialog component with default configuration', () => {
 		assert.strictEqual(dialogRender.getElementsByClassName('dialog__header').length, 1);
 		assert.strictEqual(dialogRender.getElementsByClassName('dialog__body').length, 1);
 
-		const dialogHeader: HTMLDivElement = dialogRender.querySelector('.dialog__header')!;
+		const dialogHeader: HTMLDivElement = dialogRender.querySelector<HTMLDivElement>('.dialog__header')!;
 		assert.strictEqual(dialogHeader.getElementsByClassName('dialog__close-button').length, 1);
 		assert.strictEqual(dialogHeader.getElementsByTagName('h2').length, 0);
 
-		const dialogBody: HTMLDivElement = dialogRender.querySelector('.dialog__body')!;
+		const dialogBody: HTMLDivElement = dialogRender.querySelector<HTMLDivElement>('.dialog__body')!;
 		assert.strictEqual(dialogBody.innerHTML, '');
 	});
 
@@ -29,7 +29,7 @@ describe('Dialog component with default configuration', () => {
 		dialog.getDialog().showModal();
 		assert.strictEqual(dialogRender.classList.contains('show'), true);
 
-		const closeButton: HTMLButtonElement = dialogRender.querySelector('.dialog__close-button')!;
+		const closeButton: HTMLButtonElement = dialogRender.querySelector<HTMLButtonElement>('.dialog__close-button')!;
 		closeButton.click();
 
 		assert.strictEqual(dialogRender.classList.contains('show'), false);
@@ -46,7 +46,7 @@ describe('Dialog component with custom title and content', () => {
 	test('should render Dialog component with custom title', () => {
 		const dialogRender: HTMLDialogElement = dialog.render();
 
-		const dialogHeader: HTMLDivElement = dialogRender.querySelector('.dialog__header')!;
+		const dialogHeader: HTMLDivElement = dialogRender.querySelector<HTMLDivElement>('.dialog__header')!;
 		assert.strictEqual(dialogHeader.textContent?.trim(), 'Custom title');
 	});
 
@@ -55,7 +55,7 @@ describe('Dialog component with custom title and content', () => {
 
 		const dialogRender: HTMLDialogElement = dialog.render();
 
-		const dialogBody: HTMLDivElement = dialogRender.querySelector('.dialog__body')!;
+		const dialogBody: HTMLDivElement = dialogRender.querySelector<HTMLDivElement>('.dialog__body')!;
 		assert.strictEqual(dialogBody.textContent?.trim(), 'Test string content');
 	});
 
@@ -65,7 +65,7 @@ describe('Dialog component with custom title and content', () => {
 		dialog.dialogContent = dialogContent;
 		const dialogRender: HTMLDialogElement = dialog.render();
 
-		const dialogBody: HTMLDivElement = dialogRender.querySelector('.dialog__body')!;
+		const dialogBody: HTMLDivElement = dialogRender.querySelector<HTMLDivElement>('.dialog__body')!;
 		assert.ok(dialogBody.innerHTML.includes(`<div>Dialog test content</div>`));
 	});
 });

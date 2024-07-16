@@ -2,6 +2,7 @@ import plusIcon from 'assets/icons/plusIcon.svg?raw';
 import crossIcon from 'assets/icons/crossIcon.svg?raw';
 import trashIcon from 'assets/icons/trashIcon.svg?raw';
 import gmailIcon from 'assets/icons/gmailIcon.svg?raw';
+import githubIcon from 'assets/icons/githubIcon.svg?raw';
 import bookmarkIcon from 'assets/icons/bookmarkIcon.svg?raw';
 import linkedInIcon from 'assets/icons/linkedInIcon.svg?raw';
 
@@ -12,6 +13,7 @@ export const iconsMap: Record<IconName, string> = {
 	cross: crossIcon,
 	trash: trashIcon,
 	gmail: gmailIcon,
+	github: githubIcon,
 	bookmark: bookmarkIcon,
 	linkedIn: linkedInIcon,
 };

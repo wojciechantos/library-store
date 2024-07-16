@@ -1,4 +1,5 @@
 import './styles.css';
+import { Text } from 'components/common/Typography';
 import { AnchorProps, AnchorVariant } from 'types.ts';
 
 export class Anchor {
@@ -10,10 +11,10 @@ export class Anchor {
 
 	constructor(props: AnchorProps) {
 		this.href = props.href;
-		this.content = props.content || undefined;
 		this.dataTest = props.dataTest || '';
 		this.className = props.className || '';
 		this.variant = props.variant || 'dark';
+		this.content = props.content || undefined;
 	}
 
 	private addClasses(element: HTMLAnchorElement): void {
@@ -35,11 +36,23 @@ export class Anchor {
 		}
 
 		if (!this.content) {
-			anchorElement.textContent = this.href;
+			const anchorText: HTMLParagraphElement = new Text({
+				color: 'light',
+				text: this.href,
+				variant: 'body_sm',
+				dataTest: this.dataTest ? `${this.dataTest}--text` : undefined,
+			}).render();
+
+			anchorElement.appendChild(anchorText);
 		} else if (this.content) {
 			if (typeof this.content === 'string') {
-				const textElement: HTMLElement | null = document.createElement('p') as HTMLElement;
-				textElement.textContent = this.content;
+				const textElement: HTMLParagraphElement = new Text({
+					color: 'light',
+					text: this.content,
+					variant: 'body_sm',
+					dataTest: this.dataTest ? `${this.dataTest}--text` : undefined,
+				}).render();
+
 				anchorElement.appendChild(textElement);
 			} else {
 				anchorElement.appendChild(this.content);

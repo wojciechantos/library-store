@@ -1,0 +1,51 @@
+.text {}
+
+.text__align--left {
+    text-align: left;
+}
+
+.text__align--center {
+    text-align: center;
+}
+
+.text__align--right {
+    text-align: right;
+}
+
+.text__font-weight--light {
+    font-weight: 400;
+}
+
+.text__font-weight--normal {
+    font-weight: 500;
+}
+
+.text__font-weight--bold {
+    font-weight: 700;
+}
+
+.text__variant--captions {
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+}
+
+.text__variant--body_sm {
+    font-size: var(--font-size-sm);
+}
+
+.text__variant--body {
+    font-size: var(--font-size-md);
+}
+
+.text__variant--body_lg {
+    font-size: var(--font-size-lg);
+}
+
+.text__color--dark {
+    color: var(--grey-100);
+}
+.text__color--light {
+    color: var(--grey-500);
+}
