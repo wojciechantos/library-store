@@ -1,9 +1,17 @@
+import path from 'path';
 import { defineConfig } from 'cypress';
+import vitePreprocessor from 'cypress-vite';
 
 export default defineConfig({
 	e2e: {
-		setupNodeEvents() {
-			// implement node event listeners here
+		setupNodeEvents(on) {
+			on(
+				'file:preprocessor',
+				vitePreprocessor({
+					configFile: path.resolve('./vite.config.ts'),
+					mode: 'development',
+				})
+			);
 		},
 		testIsolation: false,
 	},
